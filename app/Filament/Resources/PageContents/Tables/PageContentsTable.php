@@ -14,9 +14,8 @@ class PageContentsTable
     {
         return $table
             ->columns([
-                TextColumn::make('route')
-                    ->searchable(),
-                TextColumn::make('title')
+                TextColumn::make('route_uri')
+                    ->label('Page')
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()

@@ -13,6 +13,9 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Route;
 
 class PageContentResource extends Resource
 {
@@ -20,7 +23,7 @@ class PageContentResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
-    protected static ?string $recordTitleAttribute = 'route';
+    protected static ?string $recordTitleAttribute = 'route_uri';
 
     public static function form(Schema $schema): Schema
     {
