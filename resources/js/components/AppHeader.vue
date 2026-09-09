@@ -1,5 +1,8 @@
 <script setup lang="ts">
 
+import {Link} from "@inertiajs/vue3";
+import {trainingSessions as touchTraining } from "@/routes/touch-rugby";
+import {trainingSessions as unionTraining } from "@/routes/rugby-union";
 </script>
 
 <template>
@@ -7,8 +10,8 @@
         <div class="container px-2 flex flex-row justify-between items-stretch ">
             <h2 class="text-2xl">Nottinghamshire Hurricanes</h2>
             <div class="flex flex-row items-center gap-x-2">
-                <span>Touch Rugby</span>
-                <span>Rugby Union</span>
+                <Link :href="touchTraining()">Touch Rugby</Link>
+                <Link :href="unionTraining()">Rugby Union</Link>
                 <span>About Us</span>
             </div>
         </div>
