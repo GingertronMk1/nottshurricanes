@@ -22,8 +22,7 @@ class PageContentForm
             ->components([
                 Select::make('route')
                     ->options($routes)
-                    ->required(),
-                TextInput::make('title')
+                    ->searchable()
                     ->required(),
                 MarkdownEditor::make('content')
                     ->columnSpanFull(),
