@@ -1,20 +1,22 @@
 <script setup lang="ts">
 
 import {marked} from "marked";
-import {onMounted, ref} from "vue";
+import {computed} from "vue";
+import {usePage} from "@inertiajs/vue3";
 
 const props = defineProps<{
-    markdown: string
+    markdown?: string
 }>();
 
-const parsedMarkdown = ref<string>("");
-onMounted(async function () {
-    parsedMarkdown.value = await marked.parse(props.markdown);
-})
+const page = usePage();
+
+const markdown = computed<string|null>(() => props.markdown ?? page.props.page_content.content ?? null);
+
+const parsedMarkdown = computed(() => markdown.value ? marked.parse(markdown.value) : null);
 </script>
 
 <template>
-    <section v-html="parsedMarkdown" />
+    <section v-if="markdown" v-html="parsedMarkdown" />
 </template>
 
 <style scoped>
