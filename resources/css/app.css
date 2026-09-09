@@ -9,3 +9,11 @@
         'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
         'Noto Color Emoji';
 }
+
+@theme {
+    --color-hurricanes-purple: rgb(176 88 112);
+}
+
+html, body, #app {
+    height: 100%;
+}
