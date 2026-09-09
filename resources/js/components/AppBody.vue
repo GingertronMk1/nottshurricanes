@@ -4,7 +4,7 @@
 
 <template>
     <div class="flex flex-row justify-center bg-hurricanes-purple flex-1">
-        <div class="container px-2 bg-white text-black dark:bg-black dark:text-white">
+        <div class="container flex flex-col items-stretch px-2 bg-white text-black dark:bg-black dark:text-white">
             <slot />
         </div>
     </div>
