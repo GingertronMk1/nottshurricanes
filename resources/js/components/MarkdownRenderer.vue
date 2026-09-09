@@ -10,15 +10,11 @@ const props = defineProps<{
 
 const page = usePage();
 
-const markdown = computed<string|null>(() => props.markdown ?? page.props.page_content.content ?? null);
+const markdown = computed<string|null>(() => props.markdown ?? page.props.page_content?.content ?? null);
 
 const parsedMarkdown = computed(() => markdown.value ? marked.parse(markdown.value) : null);
 </script>
 
 <template>
-    <section v-if="markdown" v-html="parsedMarkdown" />
+    <section v-if="markdown" v-html="parsedMarkdown" class="markdown-renderer" />
 </template>
-
-<style scoped>
-
-</style>
