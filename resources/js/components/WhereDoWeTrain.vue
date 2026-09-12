@@ -19,7 +19,6 @@ import MarkdownRenderer from "@/components/MarkdownRenderer.vue";
             loading="lazy"
             referrerpolicy="strict-origin-when-cross-origin"
         />
-        <MarkdownRenderer markdown="# We Train At Canalside" />
     </div>
 </template>
 

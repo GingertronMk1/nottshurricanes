@@ -2,11 +2,12 @@
 
 import AppLayout from "@/layouts/AppLayout.vue";
 import WhereDoWeTrain from "@/components/WhereDoWeTrain.vue";
+import MarkdownRenderer from "@/components/MarkdownRenderer.vue";
 </script>
 
 <template>
     <AppLayout>
-        We do training sessions on Saturday mornings! Come to them!
+        <MarkdownRenderer />
         <WhereDoWeTrain />
     </AppLayout>
 </template>

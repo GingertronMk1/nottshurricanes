@@ -2,20 +2,24 @@
 
 namespace App\Models;
 
+use Database\Factories\PageContentFactory;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Facades\Route;
 
 class PageContent extends Model
 {
-    /** @use HasFactory<\Database\Factories\PageContentFactory> */
+    /** @use HasFactory<PageContentFactory> */
     use HasFactory;
 
     protected $fillable = [
         'route',
-        'title',
         'content',
+    ];
+
+    protected $appends = [
+        'route_uri',
     ];
 
     protected function routeUri(): Attribute
