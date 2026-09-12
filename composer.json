@@ -93,7 +93,8 @@
             "Illuminate\\Foundation\\ComposerScripts::prePackageUninstall"
         ],
         "reset-db": [
-            "@php artisan migrate:fresh --seed"
+            "@php artisan migrate:fresh --seed",
+            "@php artisan make:filament-user --name=\"admin\" --email=\"admin@hurricanes.test\" --password=\"1234\""
         ]
     },
     "extra": {
