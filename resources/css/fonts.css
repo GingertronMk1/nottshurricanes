@@ -5,6 +5,7 @@
 @font-face {
     font-family: ZingRustDemoBase;
     src: url("./fonts/zing/ZingRustDemo-Base.otf") format("opentype");
+    ascent-override: 115%;
 }
 @font-face {
     font-family: ZingRustDemoSh1;
