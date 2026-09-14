@@ -4,11 +4,9 @@ import AppLayout from "@/layouts/AppLayout.vue";
 </script>
 
 <template>
-    <Head title="Welcome">
-        <link rel="preconnect" href="https://rsms.me/" />
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-    </Head>
+    <Head title="Welcome" />
     <AppLayout>
-        Welcome
+        The Nottinghamshire Hurricanes RFC are Nottingham's first and only LGBTQ+ inclusive rugby club, established in 2019.
+        Open to anyone aged 18 and over, the team welcomes players of all abilities, genders, and sexualities for both touch and contact rugby.
     </AppLayout>
 </template>

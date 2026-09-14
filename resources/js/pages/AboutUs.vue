@@ -1,5 +1,6 @@
 <script setup lang="ts">
 
+import WhereDoWeTrain from "@/components/WhereDoWeTrain.vue";
 import AppLayout from "@/layouts/AppLayout.vue";
 </script>
 
@@ -7,6 +8,7 @@ import AppLayout from "@/layouts/AppLayout.vue";
     <AppLayout>
         Nottinghamshire's 1st and only inclusive Rugby team.
         Est 2019 🏉
+        <WhereDoWeTrain />
     </AppLayout>
 </template>
 
