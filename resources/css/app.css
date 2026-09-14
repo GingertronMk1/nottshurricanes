@@ -38,6 +38,10 @@ html, body, #app {
         @apply text-lg
     }
 
+    h1,h2,h3,h4,h5,h6 {
+        @apply font-hurricanes-header
+    }
+
     ul {
         @apply list-disc
     }

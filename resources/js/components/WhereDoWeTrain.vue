@@ -4,8 +4,8 @@ import MarkdownRenderer from "@/components/MarkdownRenderer.vue";
 </script>
 
 <template>
-    <div class="flex flex-col md:flex-row gap-2 mt-auto">
-        <div class="flex flex-col">
+    <div class="flex flex-col md:flex-row gap-2 mt-auto w-full">
+        <div class="flex flex-col flex-1">
             <h3 class="text-xl">Where do we train?</h3>
             <p>
                 We train at Nottingham Casuals in Beeston
@@ -20,6 +20,7 @@ import MarkdownRenderer from "@/components/MarkdownRenderer.vue";
             height="450"
             loading="lazy"
             referrerpolicy="strict-origin-when-cross-origin"
+
         />
     </div>
 </template>
