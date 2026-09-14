@@ -2,6 +2,7 @@
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
+@import './fonts.css';
 
 @theme inline {
     --font-sans: Instrument Sans, ui-sans-serif, system-ui, sans-serif,
@@ -11,6 +12,8 @@
 
 @theme {
     --color-hurricanes-purple: rgb(176 88 112);
+    --font-hurricanes-header: ZingRustDemoBase, sans-serif;
+    --font-hurricanes-body: Instrument Sans, sans-serif;
 }
 
 html, body, #app {

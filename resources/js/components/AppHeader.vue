@@ -7,7 +7,7 @@ import {aboutUs, home } from "@/routes";
 </script>
 
 <template>
-    <header class="flex flex-row justify-center py-2">
+    <header class="flex flex-row justify-center py-2 font-hurricanes-header">
         <div class="container px-2 flex flex-row justify-between items-stretch ">
             <Link :href="home()" class="text-2xl">Nottinghamshire Hurricanes</Link>
             <div class="flex flex-row items-center gap-x-2 *:p-2 *:rounded-sm">
@@ -18,7 +18,3 @@ import {aboutUs, home } from "@/routes";
         </div>
     </header>
 </template>
-
-<style scoped>
-
-</style>
