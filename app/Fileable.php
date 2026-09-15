@@ -2,8 +2,8 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Models\File;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * @mixin Model

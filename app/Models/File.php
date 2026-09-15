@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Database\Factories\FileFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
@@ -9,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 
 class File extends Model
 {
-    /** @use HasFactory<\Database\Factories\FileFactory> */
+    /** @use HasFactory<FileFactory> */
     use HasFactory;
 
     public function getFilePath(): string
