@@ -18,7 +18,11 @@ class CommitteeMemberFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'role' => $this->faker->word().' Officer',
+            'name' => $this->faker->name(),
+            'description' => $this->faker->text(),
+            'is_active' => $this->faker->randomElement([true, false]),
+            'sort_order' => $this->faker->randomNumber(),
         ];
     }
 }

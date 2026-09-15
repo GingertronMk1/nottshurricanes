@@ -16,8 +16,10 @@ return new class extends Migration
             $table->id();
             $table->string('role')->index();
             $table->string('name')->index();
+            $table->string('pronouns')->nullable();
             $table->text('description')->nullable();
             $table->boolean('is_active')->default(false);
+            $table->unsignedInteger('sort_order')->index();
             $table->foreignIdFor(User::class)->nullable();
             $table->timestamps();
         });

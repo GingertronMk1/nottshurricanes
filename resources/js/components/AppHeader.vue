@@ -2,7 +2,7 @@
 import { Link } from '@inertiajs/vue3';
 import { trainingSessions as touchTraining } from '@/routes/touch-rugby';
 import { trainingSessions as unionTraining } from '@/routes/rugby-union';
-import { aboutUs, home } from '@/routes';
+import {aboutUs, committee, home} from '@/routes';
 import HeaderDropdown from './HeaderDropdown.vue';
 </script>
 
@@ -49,11 +49,23 @@ import HeaderDropdown from './HeaderDropdown.vue';
                         >
                     </template>
                 </HeaderDropdown>
-                <Link
-                    class="hover:text-hurricanes-purple hover:bg-gray-100"
-                    :href="aboutUs()"
-                    >About Us</Link
-                >
+                <HeaderDropdown>
+                    <template #trigger>
+                        <span class="cursor-pointer">About Us</span>
+                    </template>
+                    <template #content>
+                        <Link
+                            class="hover:text-hurricanes-purple hover:bg-gray-100"
+                            :href="aboutUs()"
+                        >About Us</Link
+                        >
+                        <Link
+                            class="hover:text-hurricanes-purple hover:bg-gray-100"
+                            :href="committee()"
+                            >Our Committee</Link
+                        >
+                    </template>
+                </HeaderDropdown>
             </div>
         </div>
     </header>
