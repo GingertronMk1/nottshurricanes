@@ -18,7 +18,7 @@ class File extends Model
         return storage_path("app/public/{$this->filename}");
     }
 
-    public function getFile()
+    public function getFile(): ?string
     {
         return Storage::get($this->getFilePath());
     }
@@ -28,6 +28,9 @@ class File extends Model
         return Storage::exists($this->getFilePath());
     }
 
+    /**
+     * @return MorphTo<Model, $this>
+     */
     public function fileable(): MorphTo
     {
         return $this->morphTo('fileable');

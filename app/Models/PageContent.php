@@ -22,6 +22,9 @@ class PageContent extends Model
         'route_uri',
     ];
 
+    /**
+     * @return Attribute<string, string>
+     */
     protected function routeUri(): Attribute
     {
         return Attribute::make(
