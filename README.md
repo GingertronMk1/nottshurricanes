@@ -3,13 +3,13 @@
 ### Essentials
 
 - [ ] ⁠Club info
--⁠ [ ] ⁠Photo database
--⁠ [ ] ⁠Current committee contact details
--⁠ [ ] ⁠Policies, forms, etc.
--⁠ [ ] ⁠Sponsor page
--⁠ [ ] ⁠Welcome pack
--⁠ [ ] ⁠Big book of touch rugby (Possibly behind member login?)
--⁠ [ ] ⁠Match Schedules
+- [ ] Photo database
+- [ ] Current committee contact details
+- [ ] Policies, forms, etc.
+- [ ] Sponsor page
+- [ ] Welcome pack
+- [ ] The Big Book Of Touch Rugby
+- [ ] Match Schedules
 
 ### Nice to have
 
@@ -20,5 +20,6 @@
 
 ### Can we?
 
--⁠ [ ] ⁠Have member accounts/members only area etc.
--⁠ [ ] ⁠Direct debit set up? (Need to sort bank account stuff first)
+- [ ] ⁠Signposting for mental health resources (Looseheadz, etc.)
+- [ ] Have member accounts/members-only area etc.
+- [ ] Direct debit set up? Need back acct stuff first
