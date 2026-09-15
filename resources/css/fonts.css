@@ -1,35 +1,37 @@
 @font-face {
     font-family: ZingRustD2Demo;
-    src: url("./fonts/zing/ZingRustD2Demo-Base.otf") format("opentype");
+    src: url('./fonts/zing/ZingRustD2Demo-Base.otf') format('opentype');
 }
 @font-face {
     font-family: ZingRustDemoBase;
-    src: url("./fonts/zing/ZingRustDemo-Base.otf") format("opentype");
+    src: url('./fonts/zing/ZingRustDemo-Base.otf') format('opentype');
     ascent-override: 115%;
 }
 @font-face {
     font-family: ZingRustDemoSh1;
-    src: url("./fonts/zing/ZingRustDemo-Sh1.otf") format("opentype");
+    src: url('./fonts/zing/ZingRustDemo-Sh1.otf') format('opentype');
 }
 @font-face {
     font-family: ZingRustLH1Demo-Fill;
-    src: url("./fonts/zing/ZingRustLH1Demo-Fill.otf") format("opentype");
+    src: url('./fonts/zing/ZingRustLH1Demo-Fill.otf') format('opentype');
 }
 @font-face {
     font-family: ZingSansRustLDemo-Base;
-    src: url("./fonts/zing/ZingSansRustLDemo-Base.otf") format("opentype");
+    src: url('./fonts/zing/ZingSansRustLDemo-Base.otf') format('opentype');
 }
 @font-face {
     font-family: ZingScriptRustSBDemo-Base;
-    src: url("./fonts/zing/ZingScriptRustSBDemo-Base.otf") format("opentype");
+    src: url('./fonts/zing/ZingScriptRustSBDemo-Base.otf') format('opentype');
 }
 @font-face {
     font-family: Instrument Sans;
     style: normal;
-    src: url("./fonts/instrument/InstrumentSans-VariableFont_wdth,wght.ttf") format("truetype");
+    src: url('./fonts/instrument/InstrumentSans-VariableFont_wdth,wght.ttf')
+        format('truetype');
 }
 @font-face {
     font-family: Instrument Sans;
     style: italic;
-    src: url("./fonts/instrument/InstrumentSans-Italic-VariableFont_wdth,wght.ttf") format("truetype");
+    src: url('./fonts/instrument/InstrumentSans-Italic-VariableFont_wdth,wght.ttf')
+        format('truetype');
 }

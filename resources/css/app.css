@@ -5,9 +5,10 @@
 @import './fonts.css';
 
 @theme inline {
-    --font-sans: Instrument Sans, ui-sans-serif, system-ui, sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
-    'Noto Color Emoji';
+    --font-sans:
+        Instrument Sans, ui-sans-serif, system-ui, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+        'Noto Color Emoji';
 }
 
 @theme {
@@ -16,41 +17,48 @@
     --font-hurricanes-body: Instrument Sans, sans-serif;
 }
 
-html, body, #app {
+html,
+body,
+#app {
     height: 100%;
 }
 
-
 .markdown-renderer {
     h1 {
-        @apply text-3xl
+        @apply text-3xl;
     }
 
     h2 {
-        @apply text-2xl
+        @apply text-2xl;
     }
 
     h3 {
-        @apply text-xl
+        @apply text-xl;
     }
 
     h4 {
-        @apply text-lg
+        @apply text-lg;
     }
 
-    h1,h2,h3,h4,h5,h6 {
-        @apply font-hurricanes-header
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-hurricanes-header;
     }
 
     ul {
-        @apply list-disc
+        @apply list-disc;
     }
 
     ol {
-        @apply list-decimal
+        @apply list-decimal;
     }
 
-    ul, ol {
-        @apply list-inside
+    ul,
+    ol {
+        @apply list-inside;
     }
 }

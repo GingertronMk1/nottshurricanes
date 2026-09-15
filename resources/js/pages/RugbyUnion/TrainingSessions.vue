@@ -1,8 +1,7 @@
 <script setup lang="ts">
-
-import AppLayout from "@/layouts/AppLayout.vue";
-import WhereDoWeTrain from "@/components/WhereDoWeTrain.vue";
-import MarkdownRenderer from "@/components/MarkdownRenderer.vue";
+import AppLayout from '@/layouts/AppLayout.vue';
+import WhereDoWeTrain from '@/components/WhereDoWeTrain.vue';
+import MarkdownRenderer from '@/components/MarkdownRenderer.vue';
 </script>
 
 <template>
@@ -12,6 +11,4 @@ import MarkdownRenderer from "@/components/MarkdownRenderer.vue";
     </AppLayout>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
