@@ -21,10 +21,10 @@ use Illuminate\Support\Facades\Storage;
     'sort_order',
     'is_active',
     'description',
-    'user_id'
+    'user_id',
 ])]
 #[Appends([
-    'profile_picture_url'
+    'profile_picture_url',
 ])]
 class CommitteeMember extends Model
 {
@@ -44,6 +44,9 @@ class CommitteeMember extends Model
             ->orderBy('sort_order', 'asc');
     }
 
+    /**
+     * @return MorphOne<File, $this>
+     */
     public function profilePicture(): MorphOne
     {
         return $this
@@ -57,11 +60,14 @@ class CommitteeMember extends Model
     public function getProfilePictureURLAttribute(): string
     {
         return asset(Storage::temporaryUrl(
-            $this->profilePicture?->filename ?? 'club_logo.jpg',
+            $this->profilePicture->filename ?? 'club_logo.jpg',
             now()->addDay(),
         ));
     }
 
+    /**
+     * @return BelongsTo<User, $this>
+     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
