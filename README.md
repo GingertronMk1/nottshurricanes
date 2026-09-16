@@ -2,7 +2,7 @@
 
 ### Essentials
 
-- [ ] ⁠Club info
+- [ ] Club info
 - [ ] Photo database
 - [ ] Current committee contact details
 - [ ] Policies, forms, etc.
@@ -13,13 +13,12 @@
 
 ### Nice to have
 
-- [ ] ⁠Donation/fundraising page?
-- [ ] ⁠Kit orders & Akuma store link
-- [ ] ⁠News feed / newsletter type thing
-- [ ] ⁠Signposting for mental health resources (Looseheadz, etc.)
+- [ ] Donation/fundraising page?
+- [ ] Kit orders & Akuma store link
+- [ ] News feed / newsletter type thing
+- [ ] Signposting for mental health resources (Looseheadz, etc.)
 
 ### Can we?
 
-- [ ] ⁠Signposting for mental health resources (Looseheadz, etc.)
 - [ ] Have member accounts/members-only area etc.
 - [ ] Direct debit set up? Need back acct stuff first
