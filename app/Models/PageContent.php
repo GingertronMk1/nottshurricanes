@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Fileable;
 use Database\Factories\PageContentFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,6 +11,8 @@ use Illuminate\Support\Facades\Route;
 
 class PageContent extends Model
 {
+    use Fileable;
+
     /** @use HasFactory<PageContentFactory> */
     use HasFactory;
 

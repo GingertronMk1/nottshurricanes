@@ -5,6 +5,7 @@ namespace App\Filament\Resources\PageContents;
 use App\Filament\Resources\PageContents\Pages\CreatePageContent;
 use App\Filament\Resources\PageContents\Pages\EditPageContent;
 use App\Filament\Resources\PageContents\Pages\ListPageContents;
+use App\Filament\Resources\PageContents\RelationManagers\FilesRelationManager;
 use App\Filament\Resources\PageContents\Schemas\PageContentForm;
 use App\Filament\Resources\PageContents\Tables\PageContentsTable;
 use App\Models\PageContent;
@@ -35,7 +36,7 @@ class PageContentResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            FilesRelationManager::class,
         ];
     }
 
