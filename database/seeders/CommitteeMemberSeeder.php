@@ -21,6 +21,9 @@ class CommitteeMemberSeeder extends Seeder
         }
     }
 
+    /**
+     * @return (array<string, string>)[]
+     */
     private function getRoles(): array
     {
         return [

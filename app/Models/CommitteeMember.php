@@ -5,9 +5,9 @@ namespace App\Models;
 use App\Fileable;
 use Database\Factories\CommitteeMemberFactory;
 use Illuminate\Database\Eloquent\Attributes\Scope;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
 
 class CommitteeMember extends Model
 {
@@ -24,6 +24,9 @@ class CommitteeMember extends Model
         'is_active',
     ];
 
+    /**
+     * @param  Builder<$this>  $query
+     */
     #[Scope]
     protected function active(Builder $query): void
     {

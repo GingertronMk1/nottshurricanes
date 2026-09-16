@@ -38,6 +38,18 @@ jobs:
         run: composer setup
         if: always()
 
+      - name: Cache NPM
+        uses: actions/cache@v6
+        with:
+            path: node_modules
+            key: ${{ hashFiles('package-lock.json') }}
+
+      - name: Cache Composer
+        uses: actions/cache@v6
+        with:
+          path: vendor
+          key: ${{ hashFiles('composer.lock') }}
+
       - name: Run NPM checks
         run: npm run check
         if: always()
