@@ -2,7 +2,7 @@
 import { Link } from '@inertiajs/vue3';
 import { trainingSessions as touchTraining } from '@/routes/touch-rugby';
 import { trainingSessions as unionTraining } from '@/routes/rugby-union';
-import {aboutUs, committee, home} from '@/routes';
+import { aboutUs, committee, home } from '@/routes';
 import HeaderDropdown from './HeaderDropdown.vue';
 </script>
 
@@ -57,7 +57,7 @@ import HeaderDropdown from './HeaderDropdown.vue';
                         <Link
                             class="hover:text-hurricanes-purple hover:bg-gray-100"
                             :href="aboutUs()"
-                        >About Us</Link
+                            >About Us</Link
                         >
                         <Link
                             class="hover:text-hurricanes-purple hover:bg-gray-100"
