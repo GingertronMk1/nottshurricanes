@@ -1,0 +1,28 @@
+<?php
+
+namespace Database\Factories;
+
+use App\Models\CommitteeMember;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+/**
+ * @extends Factory<CommitteeMember>
+ */
+class CommitteeMemberFactory extends Factory
+{
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        return [
+            'role' => $this->faker->word().' Officer',
+            'name' => $this->faker->name(),
+            'description' => $this->faker->text(),
+            'is_active' => $this->faker->randomElement([true, false]),
+            'sort_order' => $this->faker->randomNumber(),
+        ];
+    }
+}

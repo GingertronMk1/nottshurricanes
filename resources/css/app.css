@@ -2,6 +2,7 @@
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
+@import './fonts.css';
 
 @theme inline {
     --font-sans:
@@ -12,8 +13,52 @@
 
 @theme {
     --color-hurricanes-purple: rgb(176 88 112);
+    --font-hurricanes-header: ZingRustDemoBase, sans-serif;
+    --font-hurricanes-body: Instrument Sans, sans-serif;
 }
 
-html, body, #app {
+html,
+body,
+#app {
     height: 100%;
+}
+
+.markdown-renderer {
+    h1 {
+        @apply text-3xl;
+    }
+
+    h2 {
+        @apply text-2xl;
+    }
+
+    h3 {
+        @apply text-xl;
+    }
+
+    h4 {
+        @apply text-lg;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-hurricanes-header;
+    }
+
+    ul {
+        @apply list-disc;
+    }
+
+    ol {
+        @apply list-decimal;
+    }
+
+    ul,
+    ol {
+        @apply list-inside;
+    }
 }
