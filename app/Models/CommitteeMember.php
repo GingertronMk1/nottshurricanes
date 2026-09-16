@@ -56,9 +56,8 @@ class CommitteeMember extends Model
 
     public function getProfilePictureURLAttribute(): string
     {
-        $path = $this->profilePicture?->filename ?? 'club_logo.jpg';
         return asset(Storage::temporaryUrl(
-            $path,
+            $this->profilePicture?->filename ?? 'club_logo.jpg',
             now()->addDay(),
         ));
     }
