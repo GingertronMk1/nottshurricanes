@@ -26,10 +26,6 @@ const links = ref<
                 title: 'Fixtures',
                 path: touchTraining(),
             },
-            {
-                title: 'Hull KR',
-                path: 'https://hullkr.co.uk/',
-            },
         ],
     },
     {
