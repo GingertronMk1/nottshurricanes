@@ -12,3 +12,33 @@ export type CommitteeMember = {
     updated_at: string;
     profile_picture_url: string;
 };
+
+export type BlogPost = {
+    id: number;
+    title: string;
+    content: string;
+    slug: string;
+    created_at: string;
+    updated_at: string;
+}
+
+export type Paginated<T> = {
+    current_page: number;
+    data: T[],
+    first_page_url: string;
+    from: number;
+    last_page: number;
+    last_page_url: string;
+    links: {
+        url: string;
+        active: boolean;
+        label: string;
+        page: number;
+    }[],
+    next_page_url: string;
+    path: string;
+    per_page: number;
+    prev_page_url: string;
+    to: number;
+    total: number;
+}
