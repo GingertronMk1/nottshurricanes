@@ -27,9 +27,14 @@ defineProps<{
 
         <template v-for="link in posts.links" :key="link.url">
             <Link
-                v-if="link.url"
-                :href="link.url"
-                class="font-hurricanes-header hover:text-hurricanes-purple bg-white text-black text-2xl p-2 flex flex-col items-center justify-center"
+                :href="link.url ?? '#'"
+                :class="{
+                   'hover:text-hurricanes-purple text-black bg-white': link.url !== null,
+                   'bg-gray-500 text-gray-800 cursor-not-allowed': link.url === null,
+                   'bg-hurricanes-purple!': link.active,
+
+                }"
+                class="font-hurricanes-header text-2xl p-2 flex flex-col items-center justify-center"
             >
                 <span class="whitespace-nowrap" v-html="link.label" />
             </Link>
