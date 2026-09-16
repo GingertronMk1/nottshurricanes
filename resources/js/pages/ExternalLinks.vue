@@ -19,7 +19,7 @@ defineProps<{
                 <a
                     v-for="link in links"
                     :key="link.href"
-                    class="hover:text-hurricanes-purple"
+                    class="hover:text-hurricanes-purple font-hurricanes-header text-xl"
                     :href="link.href"
                     target="_blank"
                     v-text="link.name"

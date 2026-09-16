@@ -39,6 +39,10 @@ MARKDOWN,
 
 More tackling and rucking work, let's get confident with contact. Seen some great stuff the last few weeks.
 MARKDOWN,
+            'external-links' => <<<'MARKDOWN'
+Below are our external links.
+Here you will find our club shop, as well as our social media pages, which remain the best way to keep up with us (for now!).
+MARKDOWN
         ];
     }
 }
