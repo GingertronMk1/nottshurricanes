@@ -36,6 +36,25 @@ jobs:
 
       - name: Setup Application
         run: composer setup
+        if: always()
 
-      - name: Run CI Checks
-        run: composer ci:check
+      - name: Run NPM checks
+        run: npm run check
+        if: always()
+
+      - name: Run NPM type checks
+        run: npm run types:check
+        if: always()
+
+      - name: Run Composer Lint
+        run: composer lint:check
+        if: always()
+
+      - name: Run Composer Type-Check
+        run: composer types:check
+        if: always()
+
+      - name: Run Artisan Tests
+        run: php artisan test --parallel
+        if: always()
+
