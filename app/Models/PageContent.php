@@ -11,9 +11,10 @@ use Illuminate\Support\Facades\Route;
 
 class PageContent extends Model
 {
+    use Fileable;
+
     /** @use HasFactory<PageContentFactory> */
     use HasFactory;
-    use Fileable;
 
     protected $fillable = [
         'route',
