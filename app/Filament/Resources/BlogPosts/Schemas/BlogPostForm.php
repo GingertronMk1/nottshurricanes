@@ -6,6 +6,7 @@ use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
+use Filament\Support\Enums\Operation;
 
 class BlogPostForm
 {
@@ -16,7 +17,8 @@ class BlogPostForm
                 TextInput::make('title')
                     ->required(),
                 TextInput::make('slug')
-                    ->required(),
+                    ->hiddenOn(Operation::Create)
+                    ->readonly(),
                 MarkdownEditor::make('content')
                     ->required()
                     ->columnSpanFull(),

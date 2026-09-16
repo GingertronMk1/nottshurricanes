@@ -17,9 +17,10 @@ class BlogPostFactory extends Factory
      */
     public function definition(): array
     {
+        $title = $this->faker->sentence();
         return [
-            'title' => $this->faker->sentence(),
-            'slug' => $this->faker->slug(),
+            'title' => $title,
+            'slug' => BlogPost::createUniqueSlug($title),
             'content' => $this->faker->paragraph(3),
             'created_at' => $this->faker->dateTimeBetween('2019-06-06', 'now'),
         ];

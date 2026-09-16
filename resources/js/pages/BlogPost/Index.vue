@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import AppLayout from "@/layouts/AppLayout.vue";
 import {BlogPost, Paginated} from "@/types";
-import {show} from "@/routes/blog";
 import {Link} from "@inertiajs/vue3";
 import MarkdownRenderer from "@/components/MarkdownRenderer.vue";
+import {show} from "@/routes/blog";
 
 defineProps<{
     posts: Paginated<BlogPost>;
@@ -18,7 +18,7 @@ defineProps<{
                     <p class="truncate">
                         <MarkdownRenderer :markdown="post.content" />
                     </p>
-                <Link :href="show({ blog: post.id })" class="font-hurricanes-header hover:text-hurricanes-purple">
+                <Link :href="show({blog_post: post})" class="font-hurricanes-header hover:text-hurricanes-purple">
                     Go to post
                 </Link>
             </article>

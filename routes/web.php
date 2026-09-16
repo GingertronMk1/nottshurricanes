@@ -10,8 +10,10 @@ Route::inertia('/about-us', 'AboutUs')->name('about-us');
 Route::get('/committee', CommitteeController::class)->name('committee');
 Route::get('/external-links', ExternalLinksController::class)->name('external-links');
 
-Route::get('/blog', [BlogPostController::class, 'index'])->name('blog');
-Route::get('/blog/{blog_post}', [BlogPostController::class, 'show'])->name('blog-post');
+Route::prefix('/blog')->name('blog.')->group(function () {
+    Route::get('/', [BlogPostController::class, 'index'])->name('index');
+    Route::get('/{blog_post:slug}', [BlogPostController::class, 'show'])->name('show');
+});
 
 Route::prefix('/touch-rugby')->name('touch-rugby.')->group(function () {
     Route::inertia('/training-sessions', 'TouchRugby/TrainingSessions')->name('training-sessions');
