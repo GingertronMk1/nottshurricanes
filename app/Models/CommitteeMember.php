@@ -4,25 +4,34 @@ namespace App\Models;
 
 use App\Fileable;
 use Database\Factories\CommitteeMemberFactory;
+use Illuminate\Database\Eloquent\Attributes\Appends;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Support\Facades\Storage;
 
+#[Fillable([
+    'name',
+    'role',
+    'pronouns',
+    'sort_order',
+    'is_active',
+    'description',
+    'user_id'
+])]
+#[Appends([
+    'profile_picture_url'
+])]
 class CommitteeMember extends Model
 {
     use Fileable;
 
     /** @use HasFactory<CommitteeMemberFactory> */
     use HasFactory;
-
-    protected $fillable = [
-        'name',
-        'role',
-        'pronouns',
-        'sort_order',
-        'is_active',
-    ];
 
     /**
      * @param  Builder<$this>  $query
@@ -33,5 +42,29 @@ class CommitteeMember extends Model
         $query
             ->where('is_active', true)
             ->orderBy('sort_order', 'asc');
+    }
+
+    public function profilePicture(): MorphOne
+    {
+        return $this
+            ->files()
+            ->where('type', 'profile_picture')
+            ->one()
+            ->latestOfMany()
+            ->withAttributes(['type' => 'profile_picture']);
+    }
+
+    public function getProfilePictureURLAttribute(): string
+    {
+        $path = $this->profilePicture?->filename ?? 'club_logo.jpg';
+        return asset(Storage::temporaryUrl(
+            $path,
+            now()->addDay(),
+        ));
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Filament\Resources\CommitteeMembers;
 use App\Filament\Resources\CommitteeMembers\Pages\CreateCommitteeMember;
 use App\Filament\Resources\CommitteeMembers\Pages\EditCommitteeMember;
 use App\Filament\Resources\CommitteeMembers\Pages\ListCommitteeMembers;
+use App\Filament\Resources\CommitteeMembers\RelationManagers\FilesRelationManager;
 use App\Filament\Resources\CommitteeMembers\Schemas\CommitteeMemberForm;
 use App\Filament\Resources\CommitteeMembers\Tables\CommitteeMembersTable;
 use App\Models\CommitteeMember;
@@ -35,7 +36,7 @@ class CommitteeMemberResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            FilesRelationManager::class,
         ];
     }
 

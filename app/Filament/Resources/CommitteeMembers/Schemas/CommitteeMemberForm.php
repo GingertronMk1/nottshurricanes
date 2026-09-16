@@ -2,9 +2,11 @@
 
 namespace App\Filament\Resources\CommitteeMembers\Schemas;
 
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Schemas\Components\Group;
 use Filament\Schemas\Schema;
 
 class CommitteeMemberForm
@@ -25,6 +27,11 @@ class CommitteeMemberForm
                     ->numeric(),
                 TextInput::make('user_id')
                     ->numeric(),
+                Group::make()
+                    ->relationship('profilePicture')
+                    ->schema([
+                        FileUpload::make('filename'),
+                    ]),
             ]);
     }
 }

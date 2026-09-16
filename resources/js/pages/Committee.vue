@@ -16,9 +16,9 @@ defineProps<{
                 class="flex flex-col items-stretch gap-2"
             >
                 <img
-                    src="../../images/club_logo.jpg"
+                    :src="member.profile_picture_url"
                     alt="test"
-                    class="aspect-square rounded-sm"
+                    class="aspect-square rounded-sm object-cover"
                 />
                 <h4
                     class="font-hurricanes-header text-xl"

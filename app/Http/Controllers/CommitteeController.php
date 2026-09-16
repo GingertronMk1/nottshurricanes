@@ -15,7 +15,7 @@ class CommitteeController extends Controller
     public function __invoke(Request $request): Response|ResponseFactory
     {
         return inertia('Committee', [
-            'committee_members' => CommitteeMember::query()->active()->get(),
+            'committee_members' => CommitteeMember::query()->with('profilePicture')->active()->get(),
         ]);
     }
 }
