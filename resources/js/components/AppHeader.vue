@@ -1,9 +1,60 @@
 <script setup lang="ts">
-import { Link } from '@inertiajs/vue3';
+import {Head, Link} from '@inertiajs/vue3';
 import { trainingSessions as touchTraining } from '@/routes/touch-rugby';
 import { trainingSessions as unionTraining } from '@/routes/rugby-union';
-import { aboutUs, committee, home } from '@/routes';
+import {aboutUs, committee, externalLinks, home} from '@/routes';
 import HeaderDropdown from './HeaderDropdown.vue';
+import {ref} from "vue";
+import {RouteDefinition} from "@/wayfinder";
+
+const links = ref<{
+    title: string;
+    links: {title: string; path: string|RouteDefinition<'get'>}[]
+}[]>([
+    {
+        title: 'Touch Rugby',
+        links: [
+            {
+                title: 'Training Sessions',
+                path: touchTraining(),
+            },
+            {
+                title: 'Fixtures',
+                path: touchTraining(),
+            },
+        ]
+    },
+    {
+        title: 'Rugby Union',
+        links: [
+            {
+                title: 'Training Sessions',
+                path: unionTraining(),
+            },
+            {
+                title: 'Fixtures',
+                path: unionTraining(),
+            },
+        ]
+    },
+    {
+        title: 'About Us',
+        links: [
+            {
+                title: 'About Us',
+                path: aboutUs(),
+            },
+            {
+                title: 'Out Committee',
+                path: committee(),
+            },
+            {
+                title: 'External Links',
+                path: externalLinks(),
+            }
+        ],
+    }
+]);
 </script>
 
 <template>
@@ -15,55 +66,17 @@ import HeaderDropdown from './HeaderDropdown.vue';
                 >Nottinghamshire Hurricanes</Link
             >
             <div class="flex flex-row items-center gap-x-2 *:rounded-sm *:p-2">
-                <HeaderDropdown>
+                <HeaderDropdown v-for="section in links" :key="section.title">
                     <template #trigger>
-                        <span class="cursor-pointer">Touch Rugby</span>
+                        <span class="cursor-pointer" v-text="section.title" />
                     </template>
                     <template #content>
                         <Link
+                            v-for="link in section.links"
+                            :key="`${section.title}-${link.title}`"
                             class="hover:text-hurricanes-purple hover:bg-gray-100"
-                            :href="touchTraining()"
-                            >Training Sessions</Link
-                        >
-                        <Link
-                            class="hover:text-hurricanes-purple hover:bg-gray-100"
-                            :href="touchTraining()"
-                            >Fixtures</Link
-                        >
-                    </template>
-                </HeaderDropdown>
-                <HeaderDropdown>
-                    <template #trigger>
-                        <span class="cursor-pointer">Rugby Union</span>
-                    </template>
-                    <template #content>
-                        <Link
-                            class="hover:text-hurricanes-purple hover:bg-gray-100"
-                            :href="unionTraining()"
-                            >Training Sessions</Link
-                        >
-                        <Link
-                            class="hover:text-hurricanes-purple hover:bg-gray-100"
-                            :href="unionTraining()"
-                            >Fixtures</Link
-                        >
-                    </template>
-                </HeaderDropdown>
-                <HeaderDropdown>
-                    <template #trigger>
-                        <span class="cursor-pointer">About Us</span>
-                    </template>
-                    <template #content>
-                        <Link
-                            class="hover:text-hurricanes-purple hover:bg-gray-100"
-                            :href="aboutUs()"
-                            >About Us</Link
-                        >
-                        <Link
-                            class="hover:text-hurricanes-purple hover:bg-gray-100"
-                            :href="committee()"
-                            >Our Committee</Link
-                        >
+                            :href="link.path"
+                            >{{ link.title}}</Link>
                     </template>
                 </HeaderDropdown>
             </div>
