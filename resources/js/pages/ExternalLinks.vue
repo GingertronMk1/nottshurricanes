@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import AppLayout from '@/layouts/AppLayout.vue';
-import MarkdownRenderer from "@/components/MarkdownRenderer.vue";
+import MarkdownRenderer from '@/components/MarkdownRenderer.vue';
 
 defineProps<{
     links: {
@@ -14,7 +14,7 @@ defineProps<{
     <AppLayout>
         <div class="flex flex-col gap-2">
             <h2 class="font-hurricanes-header text-3xl">External Links</h2>
-            <MarkdownRenderer/>
+            <MarkdownRenderer />
             <div class="mt-2 flex flex-col gap-2 pl-2">
                 <a
                     v-for="link in links"
