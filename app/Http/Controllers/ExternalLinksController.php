@@ -1,19 +1,20 @@
 <?php
 
-namespace {{ namespace }};
+namespace App\Http\Controllers;
 
-use {{ rootNamespace }}Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\Response;
 use Inertia\ResponseFactory;
 
-class {{ class }} extends Controller
+class ExternalLinksController extends Controller
 {
     /**
      * Handle the incoming request.
      */
     public function __invoke(Request $request): Response|ResponseFactory
     {
-        //
+        return inertia('ExternalLinks', [
+            'links' => config('external_links.links'),
+        ]);
     }
 }

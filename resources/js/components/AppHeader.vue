@@ -1,9 +1,68 @@
 <script setup lang="ts">
-import { Link } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 import { trainingSessions as touchTraining } from '@/routes/touch-rugby';
 import { trainingSessions as unionTraining } from '@/routes/rugby-union';
-import { aboutUs, committee, home } from '@/routes';
+import { aboutUs, committee, externalLinks, home } from '@/routes';
 import HeaderDropdown from './HeaderDropdown.vue';
+import { ref } from 'vue';
+import { RouteDefinition } from '@/wayfinder';
+
+type LinkPath = string | RouteDefinition<'get'>;
+
+const links = ref<
+    {
+        title: string;
+        links: { title: string; path: LinkPath }[];
+    }[]
+>([
+    {
+        title: 'Touch Rugby',
+        links: [
+            {
+                title: 'Training Sessions',
+                path: touchTraining(),
+            },
+            {
+                title: 'Fixtures',
+                path: touchTraining(),
+            },
+            {
+                title: 'Hull KR',
+                path: 'https://hullkr.co.uk/',
+            },
+        ],
+    },
+    {
+        title: 'Rugby Union',
+        links: [
+            {
+                title: 'Training Sessions',
+                path: unionTraining(),
+            },
+            {
+                title: 'Fixtures',
+                path: unionTraining(),
+            },
+        ],
+    },
+    {
+        title: 'About Us',
+        links: [
+            {
+                title: 'About Us',
+                path: aboutUs(),
+            },
+            {
+                title: 'Our Committee',
+                path: committee(),
+            },
+            {
+                title: 'External Links',
+                path: externalLinks(),
+            },
+        ],
+    },
+]);
 </script>
 
 <template>
@@ -12,58 +71,36 @@ import HeaderDropdown from './HeaderDropdown.vue';
             <Link
                 :href="home()"
                 class="hover:text-hurricanes-purple py-2 text-4xl"
-                >Nottinghamshire Hurricanes</Link
-            >
+                >Nottinghamshire Hurricanes
+            </Link>
             <div class="flex flex-row items-center gap-x-2 *:rounded-sm *:p-2">
-                <HeaderDropdown>
+                <HeaderDropdown v-for="section in links" :key="section.title">
                     <template #trigger>
-                        <span class="cursor-pointer">Touch Rugby</span>
+                        <span class="cursor-pointer" v-text="section.title" />
                     </template>
                     <template #content>
-                        <Link
-                            class="hover:text-hurricanes-purple hover:bg-gray-100"
-                            :href="touchTraining()"
-                            >Training Sessions</Link
+                        <template
+                            v-for="link in section.links"
+                            :key="`${section.title}-${link.title}`"
                         >
-                        <Link
-                            class="hover:text-hurricanes-purple hover:bg-gray-100"
-                            :href="touchTraining()"
-                            >Fixtures</Link
-                        >
-                    </template>
-                </HeaderDropdown>
-                <HeaderDropdown>
-                    <template #trigger>
-                        <span class="cursor-pointer">Rugby Union</span>
-                    </template>
-                    <template #content>
-                        <Link
-                            class="hover:text-hurricanes-purple hover:bg-gray-100"
-                            :href="unionTraining()"
-                            >Training Sessions</Link
-                        >
-                        <Link
-                            class="hover:text-hurricanes-purple hover:bg-gray-100"
-                            :href="unionTraining()"
-                            >Fixtures</Link
-                        >
-                    </template>
-                </HeaderDropdown>
-                <HeaderDropdown>
-                    <template #trigger>
-                        <span class="cursor-pointer">About Us</span>
-                    </template>
-                    <template #content>
-                        <Link
-                            class="hover:text-hurricanes-purple hover:bg-gray-100"
-                            :href="aboutUs()"
-                            >About Us</Link
-                        >
-                        <Link
-                            class="hover:text-hurricanes-purple hover:bg-gray-100"
-                            :href="committee()"
-                            >Our Committee</Link
-                        >
+                            <Link
+                                v-if="
+                                    (link.path as RouteDefinition<'get'>)
+                                        .method !== undefined
+                                "
+                                class="hover:text-hurricanes-purple hover:bg-gray-100"
+                                :href="link.path"
+                            >
+                                {{ link.title }}
+                            </Link>
+                            <a
+                                v-else
+                                class="hover:text-hurricanes-purple hover:bg-gray-100"
+                                :href="link.path as string"
+                                target="_blank"
+                                v-text="link.title"
+                            />
+                        </template>
                     </template>
                 </HeaderDropdown>
             </div>
