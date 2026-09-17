@@ -9,6 +9,8 @@ import { index } from '@/routes/blog';
 import type { HeaderItem, HeaderItemFolder, HeaderItemLink } from '@/types';
 import HeaderLink from '@/components/Header/HeaderLink.vue';
 import HeaderFolder from '@/components/Header/HeaderFolder.vue';
+import { index as unionFixturesIndex } from '@/routes/rugby-union/fixtures';
+import { index as touchFixturesIndex } from '@/routes/touch-rugby/fixtures';
 
 const links = ref<HeaderItem[]>([
     {
@@ -24,16 +26,7 @@ const links = ref<HeaderItem[]>([
             },
             {
                 title: 'Fixtures',
-                links: [
-                    {
-                        title: 'Training Sessions',
-                        path: unionTraining(),
-                    },
-                    {
-                        title: 'Fixtures',
-                        path: unionTraining(),
-                    },
-                ],
+                path: touchFixturesIndex(),
             },
         ],
     },
@@ -46,7 +39,7 @@ const links = ref<HeaderItem[]>([
             },
             {
                 title: 'Fixtures',
-                path: unionTraining(),
+                path: unionFixturesIndex(),
             },
         ],
     },

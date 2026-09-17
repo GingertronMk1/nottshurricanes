@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             PageContentSeeder::class,
             CommitteeMemberSeeder::class,
             BlogPostSeeder::class,
+            FixtureSeeder::class,
         ]);
     }
 }
