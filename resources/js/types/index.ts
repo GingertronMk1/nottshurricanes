@@ -1,4 +1,4 @@
-import {RouteDefinition} from "@/wayfinder";
+import { RouteDefinition } from '@/wayfinder';
 
 export * from './auth';
 
@@ -7,15 +7,14 @@ export type LinkPath = string | RouteDefinition<'get'>;
 export type HeaderItemLink = {
     title: string;
     path: LinkPath;
-}
+};
 
 export type HeaderItemFolder = {
     title: string;
     links: HeaderItem[];
-}
+};
 
 export type HeaderItem = HeaderItemLink | HeaderItemFolder;
-
 
 export type CommitteeMember = {
     id: number;
