@@ -20,11 +20,11 @@ export type BlogPost = {
     slug: string;
     created_at: string;
     updated_at: string;
-}
+};
 
 export type Paginated<T> = {
     current_page: number;
-    data: T[],
+    data: T[];
     first_page_url: string;
     from: number;
     last_page: number;
@@ -34,11 +34,11 @@ export type Paginated<T> = {
         active: boolean;
         label: string;
         page: number;
-    }[],
+    }[];
     next_page_url: string;
     path: string;
     per_page: number;
     prev_page_url: string;
     to: number;
     total: number;
-}
+};
