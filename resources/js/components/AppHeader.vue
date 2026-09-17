@@ -8,7 +8,7 @@ import { ref } from 'vue';
 import { index } from '@/routes/blog';
 import type { HeaderItem, HeaderItemFolder, HeaderItemLink } from '@/types';
 import HeaderLink from '@/components/Header/HeaderLink.vue';
-import HeaderFolder from "@/components/Header/HeaderFolder.vue";
+import HeaderFolder from '@/components/Header/HeaderFolder.vue';
 
 const links = ref<HeaderItem[]>([
     {
