@@ -6,6 +6,7 @@ import { aboutUs, committee, externalLinks, home } from '@/routes';
 import HeaderDropdown from './HeaderDropdown.vue';
 import { ref } from 'vue';
 import { RouteDefinition } from '@/wayfinder';
+import { index } from '@/routes/blog';
 
 type LinkPath = string | RouteDefinition<'get'>;
 
@@ -55,6 +56,10 @@ const links = ref<
             {
                 title: 'External Links',
                 path: externalLinks(),
+            },
+            {
+                title: 'Blog',
+                path: index(),
             },
         ],
     },

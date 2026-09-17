@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogPostController;
 use App\Http\Controllers\CommitteeController;
 use App\Http\Controllers\ExternalLinksController;
 
@@ -8,6 +9,11 @@ Route::inertia('/', 'Welcome')->name('home');
 Route::inertia('/about-us', 'AboutUs')->name('about-us');
 Route::get('/committee', CommitteeController::class)->name('committee');
 Route::get('/external-links', ExternalLinksController::class)->name('external-links');
+
+Route::prefix('/blog')->name('blog.')->group(function () {
+    Route::get('/', [BlogPostController::class, 'index'])->name('index');
+    Route::get('/{blog_post:slug}', [BlogPostController::class, 'show'])->name('show');
+});
 
 Route::prefix('/touch-rugby')->name('touch-rugby.')->group(function () {
     Route::inertia('/training-sessions', 'TouchRugby/TrainingSessions')->name('training-sessions');
