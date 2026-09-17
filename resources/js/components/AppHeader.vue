@@ -1,21 +1,19 @@
 <script setup lang="ts">
-import { Head, Link } from '@inertiajs/vue3';
-import { trainingSessions as touchTraining } from '@/routes/touch-rugby';
-import { trainingSessions as unionTraining } from '@/routes/rugby-union';
-import { aboutUs, committee, externalLinks, home } from '@/routes';
+import {Head, Link} from '@inertiajs/vue3';
+import {trainingSessions as touchTraining} from '@/routes/touch-rugby';
+import {trainingSessions as unionTraining} from '@/routes/rugby-union';
+import {aboutUs, committee, externalLinks, home} from '@/routes';
 import HeaderDropdown from './HeaderDropdown.vue';
-import { ref } from 'vue';
-import { RouteDefinition } from '@/wayfinder';
-import { index } from '@/routes/blog';
+import {ref} from 'vue';
+import {index} from "@/routes/blog";
+import type {HeaderItem, HeaderItemFolder, HeaderItemLink} from "@/types";
+import HeaderLink from "@/components/Header/HeaderLink.vue";
 
-type LinkPath = string | RouteDefinition<'get'>;
-
-const links = ref<
+const links = ref<HeaderItem[]>([
     {
-        title: string;
-        links: { title: string; path: LinkPath }[];
-    }[]
->([
+        title: 'Blog',
+        path: index()
+    },
     {
         title: 'Touch Rugby',
         links: [
@@ -64,6 +62,8 @@ const links = ref<
         ],
     },
 ]);
+
+const asLinkPath = (link: HeaderItem) => (link as HeaderItemLink).path;
 </script>
 
 <template>
@@ -72,38 +72,30 @@ const links = ref<
             <Link
                 :href="home()"
                 class="hover:text-hurricanes-purple py-2 text-4xl"
-                >Nottinghamshire Hurricanes
+            >Nottinghamshire Hurricanes
             </Link>
             <div class="flex flex-row items-center gap-x-2 *:rounded-sm *:p-2">
-                <HeaderDropdown v-for="section in links" :key="section.title">
-                    <template #trigger>
-                        <span class="cursor-pointer" v-text="section.title" />
+                <template v-for="section in links" :key="section.title">
+                    <template v-if="asLinkPath(section) !== undefined">
+                        <HeaderLink :link="section as HeaderItemLink"/>
                     </template>
-                    <template #content>
-                        <template
-                            v-for="link in section.links"
-                            :key="`${section.title}-${link.title}`"
-                        >
-                            <Link
-                                v-if="
-                                    (link.path as RouteDefinition<'get'>)
-                                        .method !== undefined
-                                "
-                                class="hover:text-hurricanes-purple hover:bg-gray-100"
-                                :href="link.path"
-                            >
-                                {{ link.title }}
-                            </Link>
-                            <a
-                                v-else
-                                class="hover:text-hurricanes-purple hover:bg-gray-100"
-                                :href="link.path as string"
-                                target="_blank"
-                                v-text="link.title"
-                            />
+                    <HeaderDropdown v-else>
+                        <template #trigger>
+                            <span class="cursor-pointer" v-text="section.title"/>
                         </template>
-                    </template>
-                </HeaderDropdown>
+                        <template #content>
+                            <template v-if="(section as HeaderItemFolder).links !== undefined">
+                                <template
+                                    v-for="link in (section as HeaderItemFolder).links"
+                                    :key="`${section.title}-${link.title}`"
+                                >
+                                    <HeaderLink :v-if="(link as HeaderItemLink).path !== undefined"
+                                                :link="link as HeaderItemLink"/>
+                                </template>
+                            </template>
+                        </template>
+                    </HeaderDropdown>
+                </template>
             </div>
         </div>
     </header>
