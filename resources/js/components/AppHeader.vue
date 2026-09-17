@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {Head, Link} from '@inertiajs/vue3';
+import {Link} from '@inertiajs/vue3';
 import {trainingSessions as touchTraining} from '@/routes/touch-rugby';
 import {trainingSessions as unionTraining} from '@/routes/rugby-union';
 import {aboutUs, committee, externalLinks, home} from '@/routes';
