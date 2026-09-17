@@ -5,7 +5,6 @@ namespace App\Http\Controllers\TouchRugby;
 use App\Http\Controllers\Controller;
 use App\Models\Fixture;
 use App\RugbyType;
-use Illuminate\Http\Request;
 use Inertia\Response;
 
 class FixturesController extends Controller

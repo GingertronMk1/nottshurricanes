@@ -1,13 +1,12 @@
 <script setup lang="ts">
-  import AppLayout from '@/layouts/AppLayout.vue'
-  import { Head } from '@inertiajs/vue3'
+import AppLayout from '@/layouts/AppLayout.vue';
+import { Head } from '@inertiajs/vue3';
 
-  defineProps<{}>()
+defineProps<{}>();
 </script>
 
 <template>
-  <AppLayout>
-    <Head title="Show" />
-
-  </AppLayout>
+    <AppLayout>
+        <Head title="Show" />
+    </AppLayout>
 </template>

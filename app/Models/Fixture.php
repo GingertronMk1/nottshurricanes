@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use Database\Factories\FixtureFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Fixture extends Model
 {
-    /** @use HasFactory<\Database\Factories\FixtureFactory> */
+    /** @use HasFactory<FixtureFactory> */
     use HasFactory;
 }

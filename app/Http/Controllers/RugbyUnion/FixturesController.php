@@ -4,7 +4,6 @@ namespace App\Http\Controllers\RugbyUnion;
 
 use App\Http\Controllers\Controller;
 use App\Models\Fixture;
-use Illuminate\Http\Request;
 use Inertia\Response;
 
 class FixturesController extends Controller

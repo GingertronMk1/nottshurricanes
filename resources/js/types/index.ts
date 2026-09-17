@@ -70,4 +70,4 @@ export type Fixture = {
     location: string;
     start: string;
     result: Record<string, number>;
-}
+};
