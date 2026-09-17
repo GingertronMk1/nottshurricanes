@@ -3,11 +3,12 @@ import { Link } from '@inertiajs/vue3';
 import { trainingSessions as touchTraining } from '@/routes/touch-rugby';
 import { trainingSessions as unionTraining } from '@/routes/rugby-union';
 import { aboutUs, committee, externalLinks, home } from '@/routes';
-import HeaderDropdown from './HeaderDropdown.vue';
+import HeaderDropdown from './Header/HeaderDropdown.vue';
 import { ref } from 'vue';
 import { index } from '@/routes/blog';
 import type { HeaderItem, HeaderItemFolder, HeaderItemLink } from '@/types';
 import HeaderLink from '@/components/Header/HeaderLink.vue';
+import HeaderFolder from "@/components/Header/HeaderFolder.vue";
 
 const links = ref<HeaderItem[]>([
     {
@@ -23,7 +24,16 @@ const links = ref<HeaderItem[]>([
             },
             {
                 title: 'Fixtures',
-                path: touchTraining(),
+                links: [
+                    {
+                        title: 'Training Sessions',
+                        path: unionTraining(),
+                    },
+                    {
+                        title: 'Fixtures',
+                        path: unionTraining(),
+                    },
+                ],
             },
         ],
     },
@@ -99,11 +109,15 @@ const asLinkPath = (link: HeaderItem) => (link as HeaderItemLink).path;
                                     :key="`${section.title}-${link.title}`"
                                 >
                                     <HeaderLink
-                                        :v-if="
+                                        v-if="
                                             (link as HeaderItemLink).path !==
                                             undefined
                                         "
                                         :link="link as HeaderItemLink"
+                                    />
+                                    <HeaderFolder
+                                        v-else
+                                        :folder="link as HeaderItemFolder"
                                     />
                                 </template>
                             </template>
