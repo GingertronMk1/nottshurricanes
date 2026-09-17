@@ -65,6 +65,7 @@ export const enum RugbyType {
 }
 
 export type Fixture = {
+    id: number;
     type: RugbyType;
     opposition: string;
     location: string;

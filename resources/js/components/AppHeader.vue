@@ -6,11 +6,15 @@ import { aboutUs, committee, externalLinks, home } from '@/routes';
 import HeaderDropdown from './Header/HeaderDropdown.vue';
 import { ref } from 'vue';
 import { index } from '@/routes/blog';
-import type { HeaderItem, HeaderItemFolder, HeaderItemLink } from '@/types';
+import {
+    HeaderItem,
+    HeaderItemFolder,
+    HeaderItemLink,
+    RugbyType,
+} from '@/types';
 import HeaderLink from '@/components/Header/HeaderLink.vue';
 import HeaderFolder from '@/components/Header/HeaderFolder.vue';
-import { index as unionFixturesIndex } from '@/routes/rugby-union/fixtures';
-import { index as touchFixturesIndex } from '@/routes/touch-rugby/fixtures';
+import { index as fixturesIndex } from '@/routes/fixtures';
 
 const links = ref<HeaderItem[]>([
     {
@@ -26,7 +30,7 @@ const links = ref<HeaderItem[]>([
             },
             {
                 title: 'Fixtures',
-                path: touchFixturesIndex(),
+                path: fixturesIndex({ rugbyType: RugbyType.TOUCH.toString() }),
             },
         ],
     },
@@ -39,7 +43,7 @@ const links = ref<HeaderItem[]>([
             },
             {
                 title: 'Fixtures',
-                path: unionFixturesIndex(),
+                path: fixturesIndex({ rugbyType: RugbyType.UNION.toString() }),
             },
         ],
     },
