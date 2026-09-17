@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+set -e
+
+composer lint
+npm run check:fix
+echo "Run fixes, now checking types"
+composer types:check
+npm run types:check
