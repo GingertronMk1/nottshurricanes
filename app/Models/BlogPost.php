@@ -3,16 +3,10 @@
 namespace App\Models;
 
 use Database\Factories\BlogPostFactory;
-use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-#[Fillable([
-    'title',
-    'content',
-    'slug',
-])]
 class BlogPost extends Model
 {
     /** @use HasFactory<BlogPostFactory> */

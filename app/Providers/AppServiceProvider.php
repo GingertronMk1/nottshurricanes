@@ -39,6 +39,7 @@ class AppServiceProvider extends ServiceProvider
         );
 
         Model::shouldBeStrict();
+        Model::unguard();
 
         Password::defaults(fn (): ?Password => app()->isProduction()
             ? Password::min(12)

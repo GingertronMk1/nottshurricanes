@@ -16,11 +16,6 @@ class PageContent extends Model
     /** @use HasFactory<PageContentFactory> */
     use HasFactory;
 
-    protected $fillable = [
-        'route',
-        'content',
-    ];
-
     protected $appends = [
         'route_uri',
     ];

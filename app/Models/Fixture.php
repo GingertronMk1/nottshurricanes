@@ -14,5 +14,15 @@ class Fixture extends Model
 
     protected $casts = [
         'type' => RugbyType::class,
+        'start' => 'datetime',
     ];
+
+    protected $appends = [
+        'has_happened',
+    ];
+
+    public function getHasHappenedAttribute(): bool
+    {
+        return $this->start < now();
+    }
 }

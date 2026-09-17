@@ -71,4 +71,5 @@ export type Fixture = {
     location: string;
     start: string;
     result: Record<string, number>;
+    has_happened: boolean;
 };

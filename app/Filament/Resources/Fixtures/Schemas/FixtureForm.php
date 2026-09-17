@@ -15,7 +15,7 @@ class FixtureForm
         return $schema
             ->components([
                 Select::make('type')
-                    ->options(RugbyType::class)
+                    ->options(RugbyType::prettyCases())
                     ->required(),
                 TextInput::make('opposition')
                     ->required(),
