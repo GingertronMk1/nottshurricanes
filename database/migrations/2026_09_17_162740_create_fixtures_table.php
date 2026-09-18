@@ -18,7 +18,9 @@ return new class extends Migration
             $table->string('opposition');
             $table->string('location');
             $table->dateTime('start');
-            $table->json('result');
+            $table->text('report')->nullable();
+            $table->unsignedInteger('hurricanes_score')->nullable();
+            $table->unsignedInteger('opposition_score')->nullable();
             $table->timestamps();
         });
     }

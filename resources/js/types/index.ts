@@ -72,4 +72,7 @@ export type Fixture = {
     start: string;
     result: Record<string, number>;
     has_happened: boolean;
+    hurricanes_score: number;
+    opposition_score: number;
+    report: string;
 };

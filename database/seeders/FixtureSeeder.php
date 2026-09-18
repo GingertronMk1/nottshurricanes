@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Fixture;
+use App\RugbyType;
 use Illuminate\Database\Seeder;
 
 class FixtureSeeder extends Seeder
@@ -12,6 +13,9 @@ class FixtureSeeder extends Seeder
      */
     public function run(): void
     {
-        Fixture::factory(20)->create();
+        $this->command->withProgressBar(RugbyType::cases(), function (RugbyType $type) {
+            Fixture::factory(50)->forRugbyType($type)->create();
+        });
+        $this->command->newLine();
     }
 }

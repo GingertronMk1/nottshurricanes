@@ -15,7 +15,10 @@ class FixturesController extends Controller
     {
         return inertia('Fixtures/Index', [
             'type' => $rugbyType,
-            'fixtures' => Fixture::query()->where('type', $rugbyType->value)->paginate(10),
+            'fixtures' => Fixture::query()
+                ->where('type', $rugbyType->value)
+                ->orderByDesc('fixtures.start')
+                ->paginate(10),
         ]);
     }
 
