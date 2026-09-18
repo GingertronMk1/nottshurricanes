@@ -16,7 +16,7 @@ defineProps<{
         <Head title="Index" />
         <h2
             v-text="`${type.charAt(0).toUpperCase() + type.slice(1)} fixtures`"
-            class="fmb-4"
+            class="mb-4"
         />
         <div class="flex flex-col gap-2">
             <Link
@@ -28,10 +28,13 @@ defineProps<{
                     class="group-hover:text-hurricanes-purple flex-1"
                     v-text="`vs. ${fixture.opposition}`"
                 />
-                <time
-                    :datetime="fixture.start"
-                    v-text="new Date(fixture.start).toLocaleString()"
-                />
+                <span>
+                    @ {{ fixture.location }},
+                    <time
+                        :datetime="fixture.start"
+                        v-text="new Date(fixture.start).toLocaleString()"
+                    />
+                </span>
             </Link>
         </div>
         <PaginationButtons :pagination="fixtures" />
