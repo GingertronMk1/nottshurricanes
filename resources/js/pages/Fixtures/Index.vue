@@ -16,7 +16,7 @@ defineProps<{
         <Head title="Index" />
         <h2
             v-text="`${type.charAt(0).toUpperCase() + type.slice(1)} fixtures`"
-            class="font-hurricanes-header mb-4 text-3xl"
+            class="fmb-4"
         />
         <div class="flex flex-col gap-2">
             <Link
@@ -25,7 +25,7 @@ defineProps<{
                 class="group flex flex-row items-center gap-2"
             >
                 <h4
-                    class="font-hurricanes-header group-hover:text-hurricanes-purple flex-1 text-2xl"
+                    class="group-hover:text-hurricanes-purple flex-1"
                     v-text="`vs. ${fixture.opposition}`"
                 />
                 <time

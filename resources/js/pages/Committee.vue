@@ -21,7 +21,6 @@ defineProps<{
                     class="aspect-square rounded-sm object-cover"
                 />
                 <h4
-                    class="font-hurricanes-header text-xl"
                     v-text="member.role"
                 />
                 <div>

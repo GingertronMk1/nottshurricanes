@@ -16,7 +16,6 @@ defineProps<{
         <div class="flex flex-col gap-2">
             <article v-for="post in posts.data" :key="post.id">
                 <h3
-                    class="font-hurricanes-header text-xl"
                     v-text="post.title"
                 />
                 <p class="truncate">

@@ -12,6 +12,8 @@ defineProps<{
 <template>
     <AppLayout>
         <Head title="Show" />
+        <div class="flex flex-col gap-2">
+
         <h2 class="text-4xl" v-text="`vs ${fixture.opposition}`" />
         <p>
             {{ type === RugbyType.TOUCH ? 'Tapping' : 'Kicking' }} off at
@@ -20,5 +22,6 @@ defineProps<{
         <p>
             {{ fixture.has_happened ? 'Has happened' : 'Has not happened' }}
         </p>
+        </div>
     </AppLayout>
 </template>
