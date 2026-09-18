@@ -58,3 +58,21 @@ export type Paginated<T> = {
     to: number;
     total: number;
 };
+
+export const enum RugbyType {
+    UNION = 'union',
+    TOUCH = 'touch',
+}
+
+export type Fixture = {
+    id: number;
+    type: RugbyType;
+    opposition: string;
+    location: string;
+    start: string;
+    result: Record<string, number>;
+    has_happened: boolean;
+    hurricanes_score: number;
+    opposition_score: number;
+    report: string;
+};

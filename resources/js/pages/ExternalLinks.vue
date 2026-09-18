@@ -13,7 +13,7 @@ defineProps<{
 <template>
     <AppLayout>
         <div class="flex flex-col gap-2">
-            <h2 class="font-hurricanes-header text-3xl">External Links</h2>
+            <h2>External Links</h2>
             <MarkdownRenderer />
             <div class="mt-2 flex flex-col gap-2 pl-2">
                 <a

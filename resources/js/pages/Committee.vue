@@ -20,10 +20,7 @@ defineProps<{
                     alt="test"
                     class="aspect-square rounded-sm object-cover"
                 />
-                <h4
-                    class="font-hurricanes-header text-xl"
-                    v-text="member.role"
-                />
+                <h4 v-text="member.role" />
                 <div>
                     <span
                         class="font-hurricanes-body text-lg"

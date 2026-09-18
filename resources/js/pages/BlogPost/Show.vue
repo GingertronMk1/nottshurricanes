@@ -17,10 +17,7 @@ const showUpdatedAt = computed(() => postedAt.value !== updatedAt.value);
     <AppLayout>
         <div class="flex flex-col gap-2">
             <div class="flex flex-row">
-                <h2
-                    class="font-hurricanes-header w-3/4 text-3xl"
-                    v-text="post.title"
-                />
+                <h2 class="w-3/4" v-text="post.title" />
                 <div class="ml-auto flex flex-col gap-2 text-end">
                     <aside>
                         First posted

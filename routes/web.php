@@ -3,6 +3,7 @@
 use App\Http\Controllers\BlogPostController;
 use App\Http\Controllers\CommitteeController;
 use App\Http\Controllers\ExternalLinksController;
+use App\Http\Controllers\FixturesController;
 
 Route::inertia('/', 'Welcome')->name('home');
 
@@ -22,3 +23,6 @@ Route::prefix('/touch-rugby')->name('touch-rugby.')->group(function () {
 Route::prefix('/rugby-union')->name('rugby-union.')->group(function () {
     Route::inertia('/training-sessions', 'RugbyUnion/TrainingSessions')->name('training-sessions');
 });
+
+Route::get('/fixtures/{rugbyType}', [FixturesController::class, 'index'])->name('fixtures.index');
+Route::get('/fixtures/{rugbyType}/{fixture}', [FixturesController::class, 'show'])->name('fixtures.show');

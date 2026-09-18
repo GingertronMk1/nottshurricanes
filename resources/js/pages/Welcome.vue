@@ -8,7 +8,7 @@ import LeftAndRight from '@/components/LeftAndRight.vue';
     <Head title="Welcome" />
     <AppLayout>
         <LeftAndRight
-            class="[&_h2]:font-hurricanes-header [&_h2]:text-3xl [&>div>div]:flex [&>div>div]:flex-col [&>div>div]:justify-center [&>div>div]:gap-y-2 [&>div>img]:rounded-md [&>div>img]:object-cover"
+            class="[&>div>div]:flex [&>div>div]:flex-col [&>div>div]:justify-center [&>div>div]:gap-y-2 [&>div>img]:rounded-md [&>div>img]:object-cover"
         >
             <div>
                 <div class="pr-2">
