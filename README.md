@@ -9,7 +9,7 @@
 - [ ] Sponsor page
 - [ ] Welcome pack
 - [ ] The Big Book Of Touch Rugby
-- [ ] Match Schedules
+- [x] Match Schedules
 
 ### Nice to have
 
