@@ -5,9 +5,9 @@ import {
     HeaderItemFolder,
     HeaderItemLink,
 } from '@/types';
-import HeaderDropdown from '@/components/Header/HeaderDropdown.vue';
-import HeaderLink from '@/components/Header/HeaderLink.vue';
-import HeaderFolder from '@/components/Header/HeaderFolder.vue';
+import HeaderDropdown from '@/components/Header/components/desktop/HeaderDropdown.vue';
+import HeaderLink from '@/components/Header/components/desktop/HeaderLink.vue';
+import HeaderFolder from '@/components/Header/components/desktop/HeaderFolder.vue';
 
 defineProps<{
     links: HeaderItem[];
@@ -15,7 +15,9 @@ defineProps<{
 </script>
 
 <template>
-    <div class="flex flex-row items-center gap-x-2 *:rounded-sm *:p-2">
+    <div
+        class="hidden flex-row items-center gap-x-2 *:rounded-sm *:p-2 md:flex"
+    >
         <template v-for="section in links" :key="section.title">
             <template v-if="asLinkPath(section) !== undefined">
                 <HeaderLink :link="section as HeaderItemLink" />

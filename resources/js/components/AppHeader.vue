@@ -3,12 +3,12 @@ import { Link } from '@inertiajs/vue3';
 import { trainingSessions as touchTraining } from '@/routes/touch-rugby';
 import { trainingSessions as unionTraining } from '@/routes/rugby-union';
 import { aboutUs, committee, externalLinks, home } from '@/routes';
-import HeaderDropdown from './Header/HeaderDropdown.vue';
 import { ref } from 'vue';
 import { index } from '@/routes/blog';
-import { HeaderItem, HeaderItemLink, RugbyType } from '@/types';
+import { HeaderItem, RugbyType } from '@/types';
 import { index as fixturesIndex } from '@/routes/fixtures';
 import DesktopHeaderLinks from '@/components/Header/DesktopHeaderLinks.vue';
+import MobileHeaderLinks from '@/components/Header/MobileHeaderLinks.vue';
 
 const links = ref<HeaderItem[]>([
     {
@@ -66,7 +66,9 @@ const links = ref<HeaderItem[]>([
 </script>
 
 <template>
-    <header class="font-hurricanes-header flex flex-row justify-center py-2">
+    <header
+        class="font-hurricanes-header relative flex flex-row justify-center py-2"
+    >
         <div class="container flex flex-row items-stretch justify-between px-2">
             <Link
                 :href="home()"
@@ -74,6 +76,7 @@ const links = ref<HeaderItem[]>([
                 >Nottinghamshire Hurricanes
             </Link>
             <DesktopHeaderLinks :links="links" />
+            <MobileHeaderLinks :links="links" />
         </div>
     </header>
 </template>
