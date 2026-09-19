@@ -65,14 +65,16 @@ const links = ref<HeaderItem[]>([
     <header
         class="font-hurricanes-header relative flex flex-row justify-center py-2"
     >
-        <div class="container flex flex-row items-stretch justify-between px-2">
+        <div class="container flex flex-row items-stretch justify-between px-2 gap-4">
             <Link
                 :href="home()"
                 class="hover:text-hurricanes-purple py-2 text-4xl"
                 >Nottinghamshire Hurricanes
             </Link>
-            <DesktopHeaderLinks :links="links" />
-            <MobileHeaderLinks :links="links" />
+            <div class="flex flex-row items-stretch justify-between">
+                <DesktopHeaderLinks :links="links" />
+                <MobileHeaderLinks :links="links" />
+            </div>
         </div>
     </header>
 </template>
