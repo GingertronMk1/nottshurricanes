@@ -8,7 +8,7 @@ defineProps<{
 </script>
 
 <template>
-    <div class="mt-8 flex flex-row gap-2">
+    <div class="mt-8 flex flex-row items-stretch gap-2">
         <template v-for="link in pagination.links" :key="link.url">
             <Link
                 :href="link.url ?? '#'"
@@ -19,7 +19,7 @@ defineProps<{
                         link.url === null,
                     'bg-hurricanes-purple!': link.active,
                 }"
-                class="font-hurricanes-header text-md flex flex-col items-center justify-center p-1 md:p-2 md:text-2xl"
+                class="font-hurricanes-header text-md flex flex-col items-center justify-center px-2 py-1 md:px-4 md:py-2 md:text-2xl"
             >
                 <span class="whitespace-nowrap" v-html="link.label" />
             </Link>
