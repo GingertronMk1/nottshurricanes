@@ -67,10 +67,8 @@ class CommitteeMember extends Model
             ));
         }
 
-        return Storage::disk('public')->temporaryUrl(
-            'club_logo.png',
-            $tomorrow,
-        );
+        return Storage::disk('local')
+            ->url('club_logo.jpg');
     }
 
     /**
