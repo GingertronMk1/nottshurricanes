@@ -25,13 +25,13 @@
 }
 @font-face {
     font-family: Instrument Sans;
-    style: normal;
+    font-style: normal;
     src: url('./fonts/instrument/InstrumentSans-VariableFont_wdth,wght.ttf')
         format('truetype');
 }
 @font-face {
     font-family: Instrument Sans;
-    style: italic;
+    font-style: italic;
     src: url('./fonts/instrument/InstrumentSans-Italic-VariableFont_wdth,wght.ttf')
         format('truetype');
 }
