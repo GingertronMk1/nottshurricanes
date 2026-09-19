@@ -26,7 +26,7 @@ export type CommitteeMember = {
     is_active: boolean;
     created_at: string;
     updated_at: string;
-    profile_picture_url: string;
+    profile_picture_url: string | null;
 };
 
 export type BlogPost = {
@@ -76,3 +76,9 @@ export type Fixture = {
     opposition_score: number;
     report: string;
 };
+
+/**
+ * FUNCTIONS
+ */
+
+export const asLinkPath = (link: HeaderItem) => (link as HeaderItemLink).path;

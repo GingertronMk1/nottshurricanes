@@ -57,12 +57,16 @@ class CommitteeMember extends Model
             ->withAttributes(['type' => 'profile_picture']);
     }
 
-    public function getProfilePictureURLAttribute(): string
+    public function getProfilePictureURLAttribute(): ?string
     {
-        return asset(Storage::temporaryUrl(
-            $this->profilePicture->filename ?? 'club_logo.jpg',
-            now()->addDay(),
-        ));
+        if ($this->profilePicture) {
+            return asset(Storage::temporaryUrl(
+                $this->profilePicture->filename,
+                now()->addDay()
+            ));
+        }
+
+        return null;
     }
 
     /**

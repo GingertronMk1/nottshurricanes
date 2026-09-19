@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import AppLayout from '@/layouts/AppLayout.vue';
 import { CommitteeMember } from '@/types';
+import ClubLogo from '../../images/club_logo.jpg';
 
 defineProps<{
     committee_members: CommitteeMember[];
@@ -16,8 +17,8 @@ defineProps<{
                 class="flex flex-col items-stretch gap-2"
             >
                 <img
-                    :src="member.profile_picture_url"
-                    alt="test"
+                    :src="member.profile_picture_url ?? ClubLogo"
+                    :alt="member.name"
                     class="aspect-square rounded-sm object-cover"
                 />
                 <h4 v-text="member.role" />
