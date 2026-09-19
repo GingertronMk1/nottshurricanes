@@ -56,10 +56,6 @@ const links = ref<HeaderItem[]>([
                 title: 'External Links',
                 path: externalLinks(),
             },
-            {
-                title: 'Blog',
-                path: index(),
-            },
         ],
     },
 ]);
