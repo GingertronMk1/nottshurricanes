@@ -65,7 +65,9 @@ const links = ref<HeaderItem[]>([
     <header
         class="font-hurricanes-header relative flex flex-row justify-center py-2"
     >
-        <div class="container flex flex-row items-stretch justify-between px-2 gap-4">
+        <div
+            class="container flex flex-row items-stretch justify-between gap-4 px-2"
+        >
             <Link
                 :href="home()"
                 class="hover:text-hurricanes-purple py-2 text-4xl"

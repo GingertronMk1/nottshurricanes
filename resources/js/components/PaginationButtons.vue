@@ -19,7 +19,7 @@ defineProps<{
                         link.url === null,
                     'bg-hurricanes-purple!': link.active,
                 }"
-                class="font-hurricanes-header flex flex-col items-center justify-center p-1 md:p-2 text-md md:text-2xl"
+                class="font-hurricanes-header text-md flex flex-col items-center justify-center p-1 md:p-2 md:text-2xl"
             >
                 <span class="whitespace-nowrap" v-html="link.label" />
             </Link>
