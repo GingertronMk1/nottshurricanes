@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { HeaderItemFolder, HeaderItemLink } from '@/types';
 import { ref } from 'vue';
-import HeaderLink from '@/components/Header/HeaderLink.vue';
+import HeaderLink from '@/components/Header/components/desktop/HeaderLink.vue';
 
 defineProps<{
     folder: HeaderItemFolder;

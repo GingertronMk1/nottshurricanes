@@ -22,7 +22,7 @@ defineProps<{
             <Link
                 :href="show({ rugbyType: type, fixture: fixture.id })"
                 v-for="fixture in fixtures.data"
-                class="group flex flex-row items-center gap-2"
+                class="group flex flex-col items-start gap-2 md:flex-row md:items-center"
             >
                 <h4
                     class="group-hover:text-hurricanes-purple flex-1"
