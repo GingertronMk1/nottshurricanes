@@ -66,6 +66,7 @@ class CommitteeMember extends Model
                 $tomorrow,
             ));
         }
+
         return Storage::disk('public')->temporaryUrl(
             'club_logo.png',
             $tomorrow,
