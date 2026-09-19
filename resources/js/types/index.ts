@@ -76,3 +76,9 @@ export type Fixture = {
     opposition_score: number;
     report: string;
 };
+
+/**
+ * FUNCTIONS
+ */
+
+export const asLinkPath = (link: HeaderItem) => (link as HeaderItemLink).path;
