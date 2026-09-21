@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Artisan;
 use Livewire\Component;
 use Filament\Schemas\Schema;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
+use Symfony\Component\Console\Command\Command;
 
 new class extends Component implements HasSchemas {
     use InteractsWithSchemas;
@@ -47,8 +48,14 @@ new class extends Component implements HasSchemas {
         if ($this->data['has_header_row']) {
             $args['--headerRow'] = 1;
         }
-        Artisan::call(UploadCommittee::class, $args);
-        redirect(\App\Filament\Resources\CommitteeMembers\CommitteeMemberResource::getUrl());
+        try {
+            $handled = Artisan::call(UploadCommittee::class, $args);
+            if ($handled === Command::SUCCESS) {
+                redirect(\App\Filament\Resources\CommitteeMembers\CommitteeMemberResource::getUrl());
+            }
+        } catch (Throwable $th) {
+            report($th);
+        }
     }
 };
 ?>

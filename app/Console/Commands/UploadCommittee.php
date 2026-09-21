@@ -7,7 +7,9 @@ use Exception;
 use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use Spatie\SimpleExcel\SimpleExcelReader;
 
 #[Signature('app:upload-committee
     {--L|localFile=}
@@ -49,18 +51,21 @@ class UploadCommittee extends Command
             fn ($row) => count($row) >= 3,
         );
 
+        $reader = SimpleExcelReader::create($fileContents);
+        $reader->trimHeaderRow();
+
         CommitteeMember::query()->each(function (CommitteeMember $committeeMember) {
             $committeeMember->is_active = false;
             $committeeMember->save();
         });
 
-        $this->withProgressBar($rows, function ($row, $_bar, $key) {
+        $reader->getRows()->each(function ($row, $key) {
             try {
-                /** @var string[] $row */
+                /** @var array<string, string> $row */
                 CommitteeMember::query()->create([
-                    'role' => $row[0],
-                    'name' => $row[1],
-                    'pronouns' => $row[2],
+                    'role' => $row['role'],
+                    'name' => $row['name'],
+                    'pronouns' => $row['pronouns'],
                     'is_active' => true,
                     'sort_order' => $key,
                 ]);
@@ -68,6 +73,8 @@ class UploadCommittee extends Command
                 report($th);
             }
         });
+
+        array_map('unlink', glob($this->getStorageDir() . '*'));
 
         return self::SUCCESS;
     }
@@ -77,16 +84,26 @@ class UploadCommittee extends Command
      */
     private function getLocalFile(): string
     {
-        $content = file_get_contents($this->option('localFile'));
-        if ($content === false) {
-            throw new Exception('Content was not found');
-        }
-
-        return $content;
+        return $this->option('localFile');
     }
 
     private function getStorageFile(): string
     {
-        return Storage::get($this->option('storageFile'));
+        $filePath = $this->option('storageFile');
+        $extension = pathinfo($filePath, PATHINFO_EXTENSION);
+        $fileContents = Storage::get($this->option('storageFile'));
+        $fileName = $this->getStorageDir()
+            .md5($fileContents)
+            .'.'
+            .$extension;
+        Log::info($fileName);
+        file_put_contents($fileName, $fileContents);
+
+        return $fileName;
+    }
+
+    private function getStorageDir(): string
+    {
+        return public_path('/storage/committee-uploads/');
     }
 }
