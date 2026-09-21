@@ -49,6 +49,11 @@ class UploadCommittee extends Command
             fn ($row) => count($row) >= 3,
         );
 
+        CommitteeMember::query()->each(function (CommitteeMember $committeeMember) {
+            $committeeMember->is_active = false;
+            $committeeMember->save();
+        });
+
         $this->withProgressBar($rows, function ($row, $_bar, $key) {
             try {
                 /** @var string[] $row */
