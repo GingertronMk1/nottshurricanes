@@ -100,6 +100,7 @@ class UploadCommittee extends Command
             .'.'
             .$extension;
         Log::info($fileName);
+        mkdir($this->getStorageDir());
         file_put_contents($fileName, $fileContents);
 
         return $fileName;
