@@ -46,7 +46,7 @@ class UploadCommittee extends Command
 
         $rows = array_filter(
             $rows,
-            fn($row) => count($row) >= 3,
+            fn ($row) => count($row) >= 3,
         );
 
         $this->withProgressBar($rows, function ($row, $_bar, $key) {
@@ -76,6 +76,7 @@ class UploadCommittee extends Command
         if ($content === false) {
             throw new Exception('Content was not found');
         }
+
         return $content;
     }
 
