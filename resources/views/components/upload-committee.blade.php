@@ -28,7 +28,8 @@ new class extends Component implements HasSchemas {
         return $schema
             ->components([
                 \Filament\Forms\Components\FileUpload::make(self::FILE_NAME_KEY)
-                    ->required()
+                    ->required(),
+                \Filament\Forms\Components\Toggle::make('has_header_row')
             ])
             ->statePath('data');
     }
@@ -40,16 +41,19 @@ new class extends Component implements HasSchemas {
          */
         $firstFile = Arr::first($this->data[self::FILE_NAME_KEY]);
         $path = $firstFile->store(path: 'committee-uploads');
-        Artisan::call(UploadCommittee::class, [
-            '--storageFile' => $path
-        ]);
+        $args = [
+            '--storageFile' => $path,
+        ];
+        if ($this->data['has_header_row']) {
+            $args['--headerRow'] = 1;
+        }
+        Artisan::call(UploadCommittee::class, $args);
     }
-
 };
 ?>
 
 <div>
-    <form wire:submit="create">
+    <form wire:submit="create" class="flex flex-col gap-y-2">
         {{ $this->form }}
 
         <button type="submit">

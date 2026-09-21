@@ -2,9 +2,7 @@
 
 namespace App\Filament\Pages;
 
-use App\Filament\Schemas\UploadCommitteeForm;
 use Filament\Pages\Page;
-use Filament\Schemas\Schema;
 
 class UploadCommitteePage extends Page
 {
