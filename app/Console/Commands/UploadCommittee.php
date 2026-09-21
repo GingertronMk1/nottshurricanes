@@ -108,6 +108,6 @@ class UploadCommittee extends Command
 
     private function getStorageDir(): string
     {
-        return public_path('/storage/committee-uploads/');
+        return storage_path('/committee-uploads/');
     }
 }
