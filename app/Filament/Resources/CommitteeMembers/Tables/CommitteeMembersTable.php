@@ -16,8 +16,10 @@ class CommitteeMembersTable
         return $table
             ->columns([
                 TextColumn::make('role')
+                    ->sortable()
                     ->searchable(),
                 TextColumn::make('name')
+                    ->sortable()
                     ->searchable(),
                 IconColumn::make('is_active')
                     ->boolean(),

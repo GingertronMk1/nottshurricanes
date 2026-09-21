@@ -48,13 +48,22 @@ new class extends Component implements HasSchemas {
             $args['--headerRow'] = 1;
         }
         Artisan::call(UploadCommittee::class, $args);
+        redirect(\App\Filament\Resources\CommitteeMembers\CommitteeMemberResource::getUrl());
     }
 };
 ?>
 
 <div>
     <form wire:submit="create" class="flex flex-col gap-y-2">
-        {{ $this->form }}
+        <h2>Upload a CSV containing the new committee</h2>
+        <p>
+            This CSV should have the role in the first column, the person's name in the second column, and the person's
+            pronouns in the third column
+        </p>
+
+        <div>
+            {{ $this->form }}
+        </div>
 
         <button type="submit">
             Submit
