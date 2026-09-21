@@ -74,7 +74,10 @@ class UploadCommittee extends Command
             }
         });
 
-        array_map('unlink', glob($this->getStorageDir() . '*'));
+        $glob = glob($this->getStorageDir().'*');
+        if ($glob) {
+            array_map('unlink', $glob);
+        }
 
         return self::SUCCESS;
     }

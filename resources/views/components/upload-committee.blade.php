@@ -1,7 +1,9 @@
 <?php
 
 use App\Console\Commands\UploadCommittee;
+use App\Filament\Resources\CommitteeMembers\CommitteeMemberResource;
 use App\Filament\Schemas\UploadCommitteeForm;
+use Filament\Forms\Components\FileUpload;
 use Filament\Schemas\Concerns\InteractsWithSchemas;
 use Filament\Schemas\Concerns\RestrictsFileUploadsToSchemaComponents;
 use Filament\Schemas\Contracts\HasSchemas;
@@ -28,9 +30,8 @@ new class extends Component implements HasSchemas {
     {
         return $schema
             ->components([
-                \Filament\Forms\Components\FileUpload::make(self::FILE_NAME_KEY)
+                FileUpload::make(self::FILE_NAME_KEY)
                     ->required(),
-                \Filament\Forms\Components\Toggle::make('has_header_row')
             ])
             ->statePath('data');
     }
@@ -42,16 +43,10 @@ new class extends Component implements HasSchemas {
          */
         $firstFile = Arr::first($this->data[self::FILE_NAME_KEY]);
         $path = $firstFile->store(path: 'committee-uploads');
-        $args = [
-            '--storageFile' => $path,
-        ];
-        if ($this->data['has_header_row']) {
-            $args['--headerRow'] = 1;
-        }
         try {
-            $handled = Artisan::call(UploadCommittee::class, $args);
+            $handled = Artisan::call(UploadCommittee::class, ['--storageFile' => $path]);
             if ($handled === Command::SUCCESS) {
-                redirect(\App\Filament\Resources\CommitteeMembers\CommitteeMemberResource::getUrl());
+                redirect(CommitteeMemberResource::getUrl());
             }
         } catch (Throwable $th) {
             report($th);
@@ -64,8 +59,10 @@ new class extends Component implements HasSchemas {
     <form wire:submit="create" class="flex flex-col gap-y-2">
         <h2>Upload a CSV containing the new committee</h2>
         <p>
-            This CSV should have the role in the first column, the person's name in the second column, and the person's
-            pronouns in the third column
+            This CSV should have a header row, with columns marked:
+        </p>
+        <p>
+            <code>role</code> | <code>name</code> | <code>pronouns</code>
         </p>
 
         <div>
