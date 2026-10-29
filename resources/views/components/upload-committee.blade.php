@@ -17,8 +17,6 @@ use Symfony\Component\Console\Command\Command;
 new class extends Component implements HasSchemas {
     use InteractsWithSchemas;
 
-    private const string FILE_NAME_KEY = 'filename';
-
     public ?array $data = [];
 
     public function mount(): void
@@ -30,7 +28,7 @@ new class extends Component implements HasSchemas {
     {
         return $schema
             ->components([
-                FileUpload::make(self::FILE_NAME_KEY)
+                FileUpload::make('filename')
                     ->required(),
             ])
             ->statePath('data');
@@ -41,10 +39,11 @@ new class extends Component implements HasSchemas {
         /**
          * @var ?TemporaryUploadedFile $firstFile
          */
-        $firstFile = Arr::first($this->data[self::FILE_NAME_KEY]);
+        $firstFile = Arr::first($this->data['filename']);
         $path = $firstFile->store(path: 'committee-uploads');
         try {
             $handled = Artisan::call(UploadCommittee::class, ['--storageFile' => $path]);
+            Log::info('Uploaded');
             if ($handled === Command::SUCCESS) {
                 redirect(CommitteeMemberResource::getUrl());
             }
@@ -69,7 +68,7 @@ new class extends Component implements HasSchemas {
             {{ $this->form }}
         </div>
 
-        <button type="submit">
+        <button type="submit" {{ empty($data['filename']) ? 'disabled' : null }}>
             Submit
         </button>
     </form>

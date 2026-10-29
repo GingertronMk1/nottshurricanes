@@ -10,6 +10,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Spatie\SimpleExcel\SimpleExcelReader;
+use Throwable;
 
 #[Signature('app:upload-committee
     {--L|localFile=}
@@ -69,7 +70,7 @@ class UploadCommittee extends Command
                     'is_active' => true,
                     'sort_order' => $key,
                 ]);
-            } catch (\Throwable $th) {
+            } catch (Throwable $th) {
                 report($th);
             }
         });
@@ -100,7 +101,11 @@ class UploadCommittee extends Command
             .'.'
             .$extension;
         Log::info($fileName);
-        mkdir($this->getStorageDir());
+        try {
+            mkdir($this->getStorageDir());
+        } catch (Throwable) {
+            // ignore
+        }
         file_put_contents($fileName, $fileContents);
 
         return $fileName;
