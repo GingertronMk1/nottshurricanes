@@ -36,13 +36,17 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        $routeName = $request->route()?->getName();
+
         return [
             ...parent::share($request),
             'name' => config('app.name'),
             'auth' => [
                 'user' => $request->user(),
             ],
-            'page_content' => PageContent::query()->where('route', $request->route()->getName())->first(),
+            'page_content' => $routeName !== null
+                ? PageContent::query()->where('route', $routeName)->first()
+                : null,
         ];
     }
 }

@@ -18,7 +18,8 @@ class FixtureFactory extends Factory
      */
     public function definition(): array
     {
-        $type = $this->faker->randomElement(RugbyType::cases());
+        $types = RugbyType::cases();
+        $type = $types[array_rand($types)];
         $start = $this->faker->dateTimeBetween(now()->subMonth(), now()->addMonth());
         $hasHappened = $start < now();
         $hurricanesScore = null;

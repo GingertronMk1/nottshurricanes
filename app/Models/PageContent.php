@@ -21,12 +21,14 @@ class PageContent extends Model
     ];
 
     /**
-     * @return Attribute<string, string>
+     * @return Attribute<string|null, never>
      */
     protected function routeUri(): Attribute
     {
         return Attribute::make(
-            get: fn (mixed $value, array $attributes) => Route::getRoutes()->getByName($attributes['route'])->uri()
+            get: fn (mixed $value, array $attributes): ?string => is_string($attributes['route'] ?? null)
+                ? Route::getRoutes()->getByName($attributes['route'])?->uri()
+                : null,
         );
     }
 }

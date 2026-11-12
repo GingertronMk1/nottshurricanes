@@ -13,7 +13,9 @@ class PageContentForm
     {
         $routes = [];
         foreach (Route::getRoutes()->getRoutes() as $route) {
-            $routes[$route->getName()] = $route->uri;
+            if ($route->getName() !== null) {
+                $routes[$route->getName()] = $route->uri;
+            }
         }
 
         return $schema
