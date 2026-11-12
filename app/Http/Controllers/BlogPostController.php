@@ -3,17 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\BlogPost;
-use Inertia\Response;
-use Inertia\ResponseFactory;
+use Illuminate\View\View;
 
 class BlogPostController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(): Response|ResponseFactory
+    public function index(): View
     {
-        return inertia('BlogPost/Index', [
+        return view('blog.index', [
             'posts' => BlogPost::query()->paginate(10),
         ]);
     }
@@ -21,9 +20,9 @@ class BlogPostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(BlogPost $blogPost): Response|ResponseFactory
+    public function show(BlogPost $blogPost): View
     {
-        return inertia('BlogPost/Show', [
+        return view('blog.show', [
             'post' => $blogPost,
         ]);
     }

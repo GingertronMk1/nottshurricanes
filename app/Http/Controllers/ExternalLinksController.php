@@ -3,17 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Inertia\Response;
-use Inertia\ResponseFactory;
+use Illuminate\View\View;
 
 class ExternalLinksController extends Controller
 {
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request): Response|ResponseFactory
+    public function __invoke(Request $request): View
     {
-        return inertia('ExternalLinks', [
+        return view('external-links', [
             'links' => config('external_links.links'),
         ]);
     }
