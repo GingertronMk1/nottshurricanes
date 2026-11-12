@@ -16,11 +16,14 @@
         ]],
     ];
 @endphp
-<header class="font-hurricanes-header relative flex flex-row justify-center py-2">
-    <div class="container flex flex-row items-stretch justify-between gap-4 px-2">
-        <a href="{{ route('home') }}" wire:navigate class="hover:text-hurricanes-purple py-2 text-4xl"
-            >Nottinghamshire Hurricanes</a>
-        <div class="flex flex-row items-stretch justify-between">
+<div class="announcement-bar"><span>NOTTINGHAMSHIRE'S INCLUSIVE RUGBY CLUB</span><span>ONE CLUB. ALL WELCOME.</span></div>
+<header class="site-header">
+    <div class="header-inner">
+        <a href="{{ route('home') }}" wire:navigate class="brand-lockup" aria-label="Nottinghamshire Hurricanes home">
+            <img src="{{ Vite::asset('resources/images/club_logo.jpg') }}" alt="" />
+            <span>NOTTINGHAMSHIRE<strong>HURRICANES<span>.</span></strong></span>
+        </a>
+        <div class="header-nav">
             <nav class="hidden flex-row items-center gap-x-2 *:rounded-sm *:p-2 md:flex" aria-label="Main navigation">
                 @foreach ($navigation as $section)
                     @if (isset($section['url']))
@@ -63,6 +66,7 @@
                     @endif
                 @endforeach
             </nav>
+            <a href="{{ route('touch-rugby.training-sessions') }}" wire:navigate class="header-cta">JOIN THE CLUB <span>↗</span></a>
             <div class="flex md:hidden" x-data="{ open: false }">
                 <div class="flex flex-col justify-center">
                     <button

@@ -15,13 +15,11 @@
     </title>
 </head>
 <body class="font-sans antialiased">
-    <div id="app" class="flex h-full flex-col">
+    <div id="app" class="site-shell">
+        <a href="#main-content" class="skip-link">Skip to content</a>
         @include('components.header')
-        <div class="bg-hurricanes-purple font-hurricanes-body flex flex-1 flex-row justify-center">
-            <main class="container flex flex-col items-stretch bg-white p-2 text-black dark:bg-black dark:text-white">
-                @yield('content')
-            </main>
-        </div>
+        <div class="site-content"><main id="main-content" class="site-main"><div class="page-content">@yield('content')</div></main></div>
+        <footer class="site-footer"><div class="footer-inner"><div><a href="{{ route('home') }}" wire:navigate class="footer-brand">NOTTINGHAMSHIRE<br /><strong>HURRICANES.</strong></a><p>Inclusive rugby. Unforgettable people.</p></div><div class="footer-links"><a href="{{ route('about-us') }}" wire:navigate>Our club</a><a href="{{ route('touch-rugby.training-sessions') }}" wire:navigate>Come and train</a><span>Nottingham, UK</span></div></div><div class="footer-bottom"><span>© Nottinghamshire Hurricanes</span><span>ONE CLUB. ALL WELCOME.</span></div></footer>
     </div>
     @livewireScripts
 </body>
