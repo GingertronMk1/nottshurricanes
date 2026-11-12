@@ -65,21 +65,27 @@ jobs:
         run: vendor/bin/sail up -d --wait
 
       - name: Setup Application
+        id: setup
         run: vendor/bin/sail composer setup
 
       - name: Run NPM checks
+        if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
         run: vendor/bin/sail npm run check
 
       - name: Run NPM type checks
+        if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
         run: vendor/bin/sail npm run types:check
 
       - name: Run Composer Lint
+        if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
         run: vendor/bin/sail composer lint:check
 
       - name: Run Composer Type-Check
+        if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
         run: vendor/bin/sail composer types:check
 
       - name: Run Artisan Tests
+        if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
         run: vendor/bin/sail artisan test --parallel
 
   dependabot-auto-merge:
