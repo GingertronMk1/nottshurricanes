@@ -15,5 +15,7 @@
             such as the Unity Cup, and organise fixtures with other local-ish IGR teams such as the Manchester Village
             Spartans.
         </p>
+        <p>We work on the skills and confidence needed for contact rugby, and welcome beginners as well as players returning to the game.</p>
+        <a href="{{ route('training-sessions') }}" wire:navigate class="text-hurricanes-purple underline">Find a training session</a>
     </div>
 @endsection

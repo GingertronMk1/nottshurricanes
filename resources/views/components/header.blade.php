@@ -13,6 +13,7 @@
         ['title' => 'About Us', 'links' => [
             ['title' => 'About Us', 'url' => route('about-us')],
             ['title' => 'Our Committee', 'url' => route('committee')],
+            ['title' => 'Contact Us', 'url' => route('contact')],
             ['title' => 'External Links', 'url' => route('external-links')],
         ]],
     ];

@@ -42,7 +42,14 @@ test('fixtures are filtered by rugby type and shown individually', function () {
 test('the training page shows both rugby formats and the training venue', function () {
     $this->get(route('training-sessions'))
         ->assertOk()
-        ->assertSee('Touch Rugby Training')
-        ->assertSee('Rugby Union Training')
+        ->assertSee('Touch Rugby')
+        ->assertSee('Rugby Union')
         ->assertSee('Nottingham Casuals');
+});
+
+test('the contact page provides general and touch contact details', function () {
+    $this->get(route('contact'))
+        ->assertOk()
+        ->assertSee('NottsHurricanes@outlook.com')
+        ->assertSee('HurricanesTouch@outlook.com');
 });

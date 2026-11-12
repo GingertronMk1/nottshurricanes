@@ -13,6 +13,7 @@
         <div class="[&_a:hover]:text-[#e3a6b6] flex flex-col gap-3 text-sm">
             <a href="{{ route('about-us') }}" wire:navigate>Our club</a>
             <a href="{{ route('training-sessions') }}" wire:navigate>Come and train</a>
+            <a href="{{ route('contact') }}" wire:navigate>Contact us</a>
             <span>Nottingham, UK</span>
         </div>
     </div>

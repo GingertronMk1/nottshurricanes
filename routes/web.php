@@ -8,6 +8,7 @@ use App\Http\Controllers\FixturesController;
 Route::get('/', fn () => view('welcome'))->name('home');
 
 Route::get('/about-us', fn () => view('about-us'))->name('about-us');
+Route::get('/contact', fn () => view('contact'))->name('contact');
 Route::get('/committee', CommitteeController::class)->name('committee');
 Route::get('/external-links', ExternalLinksController::class)->name('external-links');
 Route::get('/training-sessions', fn () => view('training-sessions'))->name('training-sessions');

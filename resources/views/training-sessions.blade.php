@@ -3,6 +3,8 @@
     <div class="flex flex-col gap-4">
         <h1>Training Sessions</h1>
 
+        <p>New to rugby or returning after a break? Come and give it a go. We welcome adults of all abilities, genders and sexualities, and your first month is free.</p>
+        <p class="border-l-4 border-hurricanes-purple bg-white p-4">Training times and venues can change. Please <a href="{{ route('contact') }}" wire:navigate class="text-hurricanes-purple underline">contact us</a> before travelling to confirm the next session.</p>
         <h3>When do we train?</h3>
 
         <h5>Touch Rugby</h5>
