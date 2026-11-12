@@ -14,12 +14,16 @@
         {{ config('app.name', 'Laravel') }}
     </title>
 </head>
-<body class="font-sans antialiased">
-    <div id="app" class="site-shell">
-        <a href="#main-content" class="skip-link">Skip to content</a>
+<body class="bg-[#111] font-hurricanes-body text-[#171417] antialiased">
+    <div id="app" class="flex min-h-screen flex-col">
+        <a href="#main-content" class="absolute -top-[100px] left-4 z-100 bg-white p-4 focus:top-4">Skip to content</a>
         @include('components.header')
-        <div class="site-content"><main id="main-content" class="site-main"><div class="page-content">@yield('content')</div></main></div>
-        <footer class="site-footer"><div class="footer-inner"><div><a href="{{ route('home') }}" wire:navigate class="footer-brand">NOTTINGHAMSHIRE<br /><strong>HURRICANES.</strong></a><p>Inclusive rugby. Unforgettable people.</p></div><div class="footer-links"><a href="{{ route('about-us') }}" wire:navigate>Our club</a><a href="{{ route('touch-rugby.training-sessions') }}" wire:navigate>Come and train</a><span>Nottingham, UK</span></div></div><div class="footer-bottom"><span>© Nottinghamshire Hurricanes</span><span>ONE CLUB. ALL WELCOME.</span></div></footer>
+        <div class="flex-1 bg-[#f8f6f4]">
+            <main id="main-content" class="min-h-[45vh]">
+                <div @class(['mx-auto max-w-[1280px] px-6 py-12' => ! View::hasSection('full-width')])>@yield('content')</div>
+            </main>
+        </div>
+        <x-footer />
     </div>
     @livewireScripts
 </body>
