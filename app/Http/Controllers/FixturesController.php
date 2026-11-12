@@ -4,16 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Fixture;
 use App\RugbyType;
-use Inertia\Response;
+use Illuminate\View\View;
 
 class FixturesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(RugbyType $rugbyType): Response
+    public function index(RugbyType $rugbyType): View
     {
-        return inertia('Fixtures/Index', [
+        return view('fixtures.index', [
             'type' => $rugbyType,
             'fixtures' => Fixture::query()
                 ->where('type', $rugbyType->value)
@@ -25,9 +25,9 @@ class FixturesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(RugbyType $rugbyType, Fixture $fixture): Response
+    public function show(RugbyType $rugbyType, Fixture $fixture): View
     {
-        return inertia('Fixtures/Show', [
+        return view('fixtures.show', [
             'type' => $rugbyType,
             'fixture' => $fixture,
         ]);
