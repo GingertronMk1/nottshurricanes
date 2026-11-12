@@ -18,9 +18,11 @@ Route::prefix('/blog')->name('blog.')->group(function () {
 });
 
 Route::prefix('/touch-rugby')->name('touch-rugby.')->group(function () {
+    Route::get('/', fn () => view('touch-rugby'))->name('index');
 });
 
 Route::prefix('/rugby-union')->name('rugby-union.')->group(function () {
+    Route::get('/', fn () => view('rugby-union'))->name('index');
 });
 
 Route::get('/fixtures/{rugbyType}', [FixturesController::class, 'index'])->name('fixtures.index');

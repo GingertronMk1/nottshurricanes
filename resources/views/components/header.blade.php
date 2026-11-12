@@ -3,9 +3,11 @@
         ['title' => 'Blog', 'url' => route('blog.index')],
         ['title' => 'Training Sessions', 'url' => route('training-sessions')],
         ['title' => 'Touch Rugby', 'links' => [
+            ['title' => 'About', 'url' => route('touch-rugby.index')],
             ['title' => 'Fixtures', 'url' => route('fixtures.index', 'touch')],
         ]],
         ['title' => 'Rugby Union', 'links' => [
+            ['title' => 'About', 'url' => route('rugby-union.index')],
             ['title' => 'Fixtures', 'url' => route('fixtures.index', 'union')],
         ]],
         ['title' => 'About Us', 'links' => [
@@ -15,12 +17,28 @@
         ]],
     ];
 @endphp
-<div class="flex justify-center bg-[#171417] px-6 py-2 text-[.55rem] font-extrabold tracking-[.16em] text-white md:justify-between md:text-[.6rem] lg:px-[max(1.5rem,calc((100vw-1440px)/2))]"><span>NOTTINGHAMSHIRE'S INCLUSIVE RUGBY CLUB</span><span class="hidden text-[#e3a6b6] md:inline">ONE CLUB. ALL WELCOME.</span></div>
+<div class="flex justify-center bg-[#171417] px-6 py-2 text-[.55rem] font-extrabold tracking-[.16em] text-white md:justify-between md:text-[.6rem] lg:px-[max(1.5rem,calc((100vw-1440px)/2))]">
+    <span>NOTTINGHAMSHIRE'S INCLUSIVE RUGBY CLUB</span
+    ><span class="hidden text-[#e3a6b6] md:inline">ONE CLUB. ALL WELCOME.</span>
+</div>
 <header class="relative z-40 bg-white">
     <div class="mx-auto flex min-h-[76px] max-w-[1440px] items-center justify-between gap-8 px-4 py-2 md:min-h-[94px] md:px-8 md:py-3">
-        <a href="{{ route('home') }}" wire:navigate class="flex items-center gap-3 text-[.63rem] leading-none font-black tracking-[.1em] text-[#171417]" aria-label="Nottinghamshire Hurricanes home">
-            <img src="{{ Vite::asset('resources/images/club_logo.jpg') }}" alt="" class="size-[46px] object-contain md:size-14" />
-            <span>NOTTINGHAMSHIRE<strong class="font-hurricanes-header mt-1 block text-xl tracking-normal md:text-[1.55rem]">HURRICANES<span class="text-hurricanes-purple">.</span></strong></span>
+        <a
+            href="{{ route('home') }}"
+            wire:navigate
+            class="flex items-center gap-3 text-[.63rem] leading-none font-black tracking-[.1em] text-[#171417]"
+            aria-label="Nottinghamshire Hurricanes home"
+        >
+            <img
+                src="{{ Vite::asset('resources/images/club_logo.jpg') }}"
+                alt=""
+                class="size-[46px] object-contain md:size-14"
+            />
+            <span
+                >NOTTINGHAMSHIRE<strong
+                    class="font-hurricanes-header mt-1 block text-xl tracking-normal md:text-[1.55rem]"
+                    >HURRICANES<span class="text-hurricanes-purple">.</span></strong
+                ></span>
         </a>
         <div class="flex items-stretch gap-6 self-stretch text-[.82rem] font-bold">
             <nav class="hidden flex-row items-center gap-x-2 *:rounded-sm *:p-2 md:flex" aria-label="Main navigation">
@@ -65,7 +83,11 @@
                     @endif
                 @endforeach
             </nav>
-            <a href="{{ route('training-sessions') }}" wire:navigate class="bg-hurricanes-purple hidden items-center gap-8 px-5 text-[.7rem] tracking-[.08em] text-white transition-colors hover:bg-[#171417] md:flex">JOIN THE CLUB <span>↗</span></a>
+            <a
+                href="{{ route('training-sessions') }}"
+                wire:navigate
+                class="bg-hurricanes-purple hidden items-center gap-8 px-5 text-[.7rem] tracking-[.08em] text-white transition-colors hover:bg-[#171417] md:flex"
+            >JOIN THE CLUB <span>↗</span></a>
             <div class="flex md:hidden" x-data="{ open: false }">
                 <div class="flex flex-col justify-center">
                     <button
