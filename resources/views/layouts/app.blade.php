@@ -13,13 +13,15 @@
         {{ config('app.name', 'Laravel') }}
     </title>
 </head>
-<body class="bg-[#111] font-hurricanes-body text-[#171417] antialiased">
+<body class="font-hurricanes-body bg-[#111] text-[#171417] antialiased">
     <div id="app" class="flex min-h-screen flex-col">
         <a href="#main-content" class="absolute -top-[100px] left-4 z-100 bg-white p-4 focus:top-4">Skip to content</a>
         @include('components.header')
         <div class="flex-1 bg-[#f8f6f4]">
             <main id="main-content" class="min-h-[45vh]">
-                <div @class(['mx-auto max-w-[1280px] px-6 py-12' => ! View::hasSection('full-width')])>@yield('content')</div>
+                <div @class(['mx-auto max-w-[1280px] px-6 py-12' => ! View::hasSection('full-width')])>
+                    @yield('content')
+                </div>
             </main>
         </div>
         <x-footer />

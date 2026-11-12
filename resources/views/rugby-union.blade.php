@@ -5,9 +5,9 @@
         <h1>Rugby Union</h1>
 
         <p>
-            Since 2023 we have run a Rugby Union team, aiming to bring inclusive rugby union to Nottinghamshire.
-            We strongly oppose the RFU's rulings regarding trans players in rugby, and anyone who wants to come along
-            and get scrumming is more than welcome to (we also don't mind if you're a back).
+            Since 2023 we have run a Rugby Union team, aiming to bring inclusive rugby union to Nottinghamshire. We
+            strongly oppose the RFU's rulings regarding trans players in rugby, and anyone who wants to come along and
+            get scrumming is more than welcome to (we also don't mind if you're a back).
         </p>
 
         <p>
@@ -15,7 +15,10 @@
             such as the Unity Cup, and organise fixtures with other local-ish IGR teams such as the Manchester Village
             Spartans.
         </p>
-        <p>We work on the skills and confidence needed for contact rugby, and welcome beginners as well as players returning to the game.</p>
+        <p>
+            We work on the skills and confidence needed for contact rugby, and welcome beginners as well as players
+            returning to the game.
+        </p>
         <x-training-call-to-action class="self-start" />
     </div>
 @endsection

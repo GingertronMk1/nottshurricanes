@@ -53,4 +53,6 @@ h6 {
     @apply font-hurricanes-header;
 }
 
-[x-cloak] { display: none !important; }
+[x-cloak] {
+    display: none !important;
+}
