@@ -101,8 +101,9 @@
                             There's a place<br />for <em class="text-[#cf8499] not-italic">you here.</em>
                         </h2>
                     </div>
-                    <p class="leading-[1.7] text-[#665e61]">
-                        Two ways to play. One brilliant community.<br />Your first month is on us.
+                    <p class="leading-[1.7] text-[#665e61] flex flex-col gap-y-2">
+                        <span>Two ways to play. One brilliant community.</span>
+                        <span class="text-right">Your first month is on us.</span>
                     </p>
                 </div>
                 <div class="grid gap-4 md:grid-cols-2">
