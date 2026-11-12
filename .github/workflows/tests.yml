@@ -89,7 +89,7 @@ jobs:
 
       - name: Run Artisan Tests
         if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
-        run: vendor/bin/sail artisan test --parallel
+        run: vendor/bin/sail artisan test --parallel --coverage --min=90
 
   dependabot-auto-merge:
     if: github.event_name == 'pull_request' && github.event.pull_request.user.login == 'dependabot[bot]'
