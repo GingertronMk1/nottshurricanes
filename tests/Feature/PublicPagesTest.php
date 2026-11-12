@@ -39,7 +39,10 @@ test('fixtures are filtered by rugby type and shown individually', function () {
     $this->get('/fixtures/invalid')->assertNotFound();
 });
 
-test('training pages show the relevant rugby format', function () {
-    $this->get(route('touch-rugby.training-sessions'))->assertOk()->assertSee('Touch Rugby Training')->assertDontSee('Rugby Union Training');
-    $this->get(route('rugby-union.training-sessions'))->assertOk()->assertSee('Rugby Union Training')->assertDontSee('Touch Rugby Training');
+test('the training page shows both rugby formats and the training venue', function () {
+    $this->get(route('training-sessions'))
+        ->assertOk()
+        ->assertSee('Touch Rugby Training')
+        ->assertSee('Rugby Union Training')
+        ->assertSee('Nottingham Casuals');
 });

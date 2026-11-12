@@ -1,12 +1,11 @@
 @php
     $navigation = [
         ['title' => 'Blog', 'url' => route('blog.index')],
+        ['title' => 'Training Sessions', 'url' => route('training-sessions')],
         ['title' => 'Touch Rugby', 'links' => [
-            ['title' => 'Training Sessions', 'url' => route('touch-rugby.training-sessions')],
             ['title' => 'Fixtures', 'url' => route('fixtures.index', 'touch')],
         ]],
         ['title' => 'Rugby Union', 'links' => [
-            ['title' => 'Training Sessions', 'url' => route('rugby-union.training-sessions')],
             ['title' => 'Fixtures', 'url' => route('fixtures.index', 'union')],
         ]],
         ['title' => 'About Us', 'links' => [
@@ -66,7 +65,7 @@
                     @endif
                 @endforeach
             </nav>
-            <a href="{{ route('touch-rugby.training-sessions') }}" wire:navigate class="bg-hurricanes-purple hidden items-center gap-8 px-5 text-[.7rem] tracking-[.08em] text-white transition-colors hover:bg-[#171417] md:flex">JOIN THE CLUB <span>↗</span></a>
+            <a href="{{ route('training-sessions') }}" wire:navigate class="bg-hurricanes-purple hidden items-center gap-8 px-5 text-[.7rem] tracking-[.08em] text-white transition-colors hover:bg-[#171417] md:flex">JOIN THE CLUB <span>↗</span></a>
             <div class="flex md:hidden" x-data="{ open: false }">
                 <div class="flex flex-col justify-center">
                     <button
