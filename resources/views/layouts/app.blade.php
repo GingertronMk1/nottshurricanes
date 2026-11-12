@@ -3,8 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="{{ Vite::asset('resources/images/club_logo.jpg') }}" type="image/jpeg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     @fonts
     @vite(['resources/css/app.css', 'resources/js/app.js'])
