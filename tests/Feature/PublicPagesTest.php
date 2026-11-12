@@ -30,13 +30,25 @@ test('external links are shared with the page', function () {
     $this->get(route('external-links'))->assertOk()->assertSee('Club shop')->assertSee('https://example.com');
 });
 
-test('fixtures are filtered by rugby type and shown individually', function () {
+test('fixtures can be filtered by rugby type and shown individually', function () {
     $fixture = Fixture::factory()->create(['type' => RugbyType::TOUCH, 'opposition' => 'Touch opponents']);
     Fixture::factory()->create(['type' => RugbyType::UNION, 'opposition' => 'Union opponents']);
 
-    $this->get(route('fixtures.index', RugbyType::TOUCH))->assertOk()->assertSee('Touch opponents')->assertDontSee('Union opponents');
-    $this->get(route('fixtures.show', [RugbyType::TOUCH, $fixture]))->assertOk()->assertSee('Touch opponents');
-    $this->get('/fixtures/invalid')->assertNotFound();
+    $this->get(route('fixtures.index'))->assertOk()->assertSee('Touch opponents')->assertSee('Union opponents');
+    $this->get(route('fixtures.index', ['type' => 'touch']))->assertOk()->assertSee('Touch opponents')->assertDontSee('Union opponents');
+    $this->get(route('fixtures.index', ['type' => 'union']))->assertOk()->assertSee('Union opponents')->assertDontSee('Touch opponents');
+    $this->get(route('fixtures.show', $fixture))->assertOk()->assertSee('Touch opponents')->assertSee('Tapping');
+    $this->get(route('fixtures.index', ['type' => 'invalid']))->assertNotFound();
+    $this->get('/fixtures?type[]=touch')->assertNotFound();
+});
+
+test('fixture pagination preserves the selected rugby type', function () {
+    Fixture::factory()->count(11)->create(['type' => RugbyType::TOUCH]);
+
+    $this->get(route('fixtures.index', ['type' => 'touch']))
+        ->assertOk()
+        ->assertSee('type=touch', false)
+        ->assertSee('page=2', false);
 });
 
 test('the training page shows both rugby formats and the training venue', function () {

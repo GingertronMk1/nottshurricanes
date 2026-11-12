@@ -20,7 +20,7 @@ test('the homepage shows the next fixture and most recent club news', function (
     $this->get(route('home'))
         ->assertOk()
         ->assertSee('Next opponents')
-        ->assertSee(route('fixtures.show', [RugbyType::UNION->value, $nextFixture]))
+        ->assertSee(route('fixtures.show', $nextFixture))
         ->assertDontSee('Past opponents')
         ->assertDontSee('Later opponents')
         ->assertSeeInOrder(['Latest story', 'Second story', 'Third story'])

@@ -4,11 +4,11 @@
         ['title' => 'Training Sessions', 'url' => route('training-sessions')],
         ['title' => 'Touch Rugby', 'links' => [
             ['title' => 'About', 'url' => route('touch-rugby.index')],
-            ['title' => 'Fixtures', 'url' => route('fixtures.index', 'touch')],
+            ['title' => 'Fixtures', 'url' => route('fixtures.index', ['type' => 'touch'])],
         ]],
         ['title' => 'Rugby Union', 'links' => [
             ['title' => 'About', 'url' => route('rugby-union.index')],
-            ['title' => 'Fixtures', 'url' => route('fixtures.index', 'union')],
+            ['title' => 'Fixtures', 'url' => route('fixtures.index', ['type' => 'union'])],
         ]],
         ['title' => 'About Us', 'links' => [
             ['title' => 'About Us', 'url' => route('about-us')],

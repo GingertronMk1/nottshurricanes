@@ -4,32 +4,34 @@ namespace App\Http\Controllers;
 
 use App\Models\Fixture;
 use App\RugbyType;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class FixturesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index(RugbyType $rugbyType): View
+    public function index(Request $request): View
     {
+        $type = $request->query('type');
+        $rugbyType = is_string($type) ? RugbyType::tryFrom($type) : null;
+        abort_if($type !== null && $rugbyType === null, 404);
+
+        $fixtures = Fixture::query();
+
+        if ($rugbyType !== null) {
+            $fixtures->where('type', $rugbyType->value);
+        }
+
         return view('fixtures.index', [
             'type' => $rugbyType,
-            'fixtures' => Fixture::query()
-                ->where('type', $rugbyType->value)
+            'fixtures' => $fixtures
                 ->orderByDesc('fixtures.start')
-                ->paginate(10),
+                ->paginate(10)
+                ->withQueryString(),
         ]);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(RugbyType $rugbyType, Fixture $fixture): View
+    public function show(Fixture $fixture): View
     {
-        return view('fixtures.show', [
-            'type' => $rugbyType,
-            'fixture' => $fixture,
-        ]);
+        return view('fixtures.show', ['fixture' => $fixture]);
     }
 }

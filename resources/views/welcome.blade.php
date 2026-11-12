@@ -57,13 +57,11 @@
                             · {{ $nextFixture->location }}
                         </p>
                     </div>
-                    <x-action-link
-                        :href="route('fixtures.show', [$nextFixture->type->value, $nextFixture])"
-                        variant="outline"
-                    >Match details</x-action-link>
+                    <x-action-link :href="route('fixtures.show', $nextFixture)" variant="outline"
+                        >Match details</x-action-link>
                 @else
                     <p class="text-[#d5cdd0]">No upcoming fixtures are scheduled yet. Check back for updates.</p>
-                    <x-action-link :href="route('fixtures.index', 'touch')" variant="outline"
+                    <x-action-link :href="route('fixtures.index', ['type' => 'touch'])" variant="outline"
                         >View fixtures</x-action-link>
                 @endif
             </div>

@@ -27,5 +27,5 @@ Route::prefix('/rugby-union')->name('rugby-union.')->group(function () {
     Route::get('/', fn () => view('rugby-union'))->name('index');
 });
 
-Route::get('/fixtures/{rugbyType}', [FixturesController::class, 'index'])->name('fixtures.index');
-Route::get('/fixtures/{rugbyType}/{fixture}', [FixturesController::class, 'show'])->name('fixtures.show');
+Route::get('/fixtures', [FixturesController::class, 'index'])->name('fixtures.index');
+Route::get('/fixtures/{fixture}', [FixturesController::class, 'show'])->name('fixtures.show');

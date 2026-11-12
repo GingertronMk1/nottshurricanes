@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('title', 'Show')
+@section('title', 'Fixture')
 @section('content')
     <div class="flex flex-col gap-2">
         <h2 class="text-4xl">vs {{ $fixture->opposition }}</h2>
         <p>
-            {{ $type === \App\RugbyType::TOUCH ? 'Tapping' : 'Kicking' }} off at
+            {{ $fixture->type === \App\RugbyType::TOUCH ? 'Tapping' : 'Kicking' }} off at
             <time
                 datetime="{{ $fixture->start->toISOString() }}"
                 data-local-datetime
