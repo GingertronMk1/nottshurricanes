@@ -1,14 +1,16 @@
 @php
+    use App\RugbyType;
+
     $navigation = [
         ['title' => 'Blog', 'url' => route('blog.index')],
         ['title' => 'Training Sessions', 'url' => route('training-sessions')],
         ['title' => 'Touch Rugby', 'links' => [
             ['title' => 'About', 'url' => route('touch-rugby.index')],
-            ['title' => 'Fixtures', 'url' => route('fixtures.index')],
+            ['title' => 'Fixtures', 'url' => route('fixtures.index', ['type' => RugbyType::TOUCH])],
         ]],
         ['title' => 'Rugby Union', 'links' => [
             ['title' => 'About', 'url' => route('rugby-union.index')],
-            ['title' => 'Fixtures', 'url' => route('fixtures.index')],
+            ['title' => 'Fixtures', 'url' => route('fixtures.index', ['type' => RugbyType::UNION])],
         ]],
         ['title' => 'About Us', 'links' => [
             ['title' => 'About Us', 'url' => route('about-us')],
