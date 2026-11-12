@@ -3,18 +3,18 @@
 @section('full-width', 'true')
 @section('content')
     <div class="bg-[#f8f6f4]">
-        <section class="relative h-[75vh] min-h-[610px] overflow-hidden bg-[#251b20] text-white md:h-[min(720px,78vh)] md:min-h-[650px]">
+        <section class="relative min-h-[610px] overflow-hidden bg-[#251b20] text-white md:min-h-[650px]">
             <img
                 src="{{ Vite::asset('resources/images/ro_in_manchester.jpg') }}"
                 alt="A Hurricanes player on the pitch"
                 class="absolute inset-0 h-full w-full object-cover object-[center_40%]"
             />
             <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(20,15,18,.95)_0%,rgba(30,19,24,.77)_43%,rgba(22,16,19,.15)_100%),linear-gradient(0deg,rgba(20,15,18,.55),transparent_35%)]"></div>
-            <div class="relative z-10 mx-auto max-w-[1440px] px-6 pt-28 pb-20 md:px-20 md:pt-32 md:pb-24">
+            <div class="relative z-10 mx-auto max-w-[1440px] px-6 pt-20 pb-28 md:px-20 md:pt-32 md:pb-32">
                 <p class="flex items-center gap-3 text-[.7rem] font-black tracking-[.16em] uppercase">
                     <span class="bg-hurricanes-purple h-[3px] w-7"></span> Nottinghamshire's inclusive rugby club
                 </p>
-                <h1 class="my-8 text-[clamp(4.5rem,18vw,7rem)] leading-[.82] tracking-[-.03em] uppercase md:text-[clamp(5rem,10vw,10rem)]">
+                <h1 class="my-8 text-[clamp(3.5rem,18vw,7rem)] leading-[.82] tracking-[-.03em] uppercase md:text-[clamp(5rem,10vw,10rem)]">
                     Find your<br /><em class="text-[#cf8499] not-italic">team.</em>
                 </h1>
                 <p class="max-w-[440px] leading-[1.7] text-[#eee8ea]">

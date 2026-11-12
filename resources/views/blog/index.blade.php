@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Club news')
 @section('content')
-    <h2 class="mb-6">Club news</h2>
+    <h1 class="mb-6">Club news</h1>
     <div class="flex flex-col gap-3">
         @forelse ($posts as $post)
             <article class="border-l-hurricanes-purple grid gap-5 border border-l-4 border-[#ded6d8] bg-white p-5 md:grid-cols-[minmax(9rem,1fr)_minmax(12rem,3.5fr)_auto] md:items-center md:gap-6 md:px-7">

@@ -44,7 +44,7 @@
                 ></span>
         </a>
         <div class="flex items-stretch gap-6 self-stretch text-[.82rem] font-bold">
-            <nav class="hidden flex-row items-center gap-x-2 *:rounded-sm *:p-2 md:flex" aria-label="Main navigation">
+            <nav class="hidden flex-row items-center gap-x-2 *:rounded-sm *:p-2 lg:flex" aria-label="Main navigation">
                 @foreach ($navigation as $section)
                     @if (isset($section['url']))
                         <a
@@ -89,9 +89,9 @@
             <a
                 href="{{ route('training-sessions') }}"
                 wire:navigate
-                class="bg-hurricanes-purple hidden items-center gap-8 px-5 text-[.7rem] tracking-[.08em] text-white transition-colors hover:bg-[#171417] md:flex"
+                class="bg-hurricanes-purple hidden items-center gap-8 px-5 text-[.7rem] tracking-[.08em] text-white transition-colors hover:bg-[#171417] lg:flex"
             >JOIN THE CLUB <span>↗</span></a>
-            <div class="flex md:hidden" x-data="{ open: false }">
+            <div class="flex lg:hidden" x-data="{ open: false }">
                 <div class="flex flex-col justify-center">
                     <button
                         type="button"

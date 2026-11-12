@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Fixtures')
 @section('content')
-    <h2 class="mb-4">Fixtures</h2>
+    <h1 class="mb-4">Fixtures</h1>
     <nav aria-label="Filter fixtures by rugby type" class="mb-6 flex flex-wrap gap-3">
         <a
             href="{{ route('fixtures.index') }}"
