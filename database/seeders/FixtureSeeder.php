@@ -13,9 +13,19 @@ class FixtureSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->command->withProgressBar(RugbyType::cases(), function (RugbyType $type) {
+        $seedFixtures = function (RugbyType $type): void {
             Fixture::factory(50)->forRugbyType($type)->create();
-        });
+        };
+
+        if ($this->command === null) {
+            foreach (RugbyType::cases() as $type) {
+                $seedFixtures($type);
+            }
+
+            return;
+        }
+
+        $this->command->withProgressBar(RugbyType::cases(), $seedFixtures);
         $this->command->newLine();
     }
 }
