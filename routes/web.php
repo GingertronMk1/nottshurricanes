@@ -4,8 +4,9 @@ use App\Http\Controllers\BlogPostController;
 use App\Http\Controllers\CommitteeController;
 use App\Http\Controllers\ExternalLinksController;
 use App\Http\Controllers\FixturesController;
+use App\Http\Controllers\HomeController;
 
-Route::get('/', fn () => view('welcome'))->name('home');
+Route::get('/', HomeController::class)->name('home');
 
 Route::get('/about-us', fn () => view('about-us'))->name('about-us');
 Route::get('/contact', fn () => view('contact'))->name('contact');

@@ -33,7 +33,39 @@
                 RUGBY FOR EVERYONE <span class="py-4 text-[#e3a6b6]">✳</span> NOTTINGHAM
             </div>
             <div class="absolute right-0 bottom-0 left-0 flex justify-between border-t border-white/25 px-6 py-4 text-[.62rem] font-extrabold tracking-[.14em] md:px-20 md:py-6">
-                <span>EST. 2019</span><span class="hidden md:inline">ONE CLUB. ALL WELCOME.</span><span>01 / 03</span>
+                <span>EST. 2019</span><span class="hidden md:inline">ONE CLUB. ALL WELCOME.</span
+                ><span>NOTTINGHAMSHIRE</span>
+            </div>
+        </section>
+
+        <section aria-labelledby="next-match-heading" class="bg-[#171417] text-white">
+            <div class="mx-auto flex max-w-[1280px] flex-col gap-6 px-6 py-8 md:flex-row md:items-center md:justify-between md:px-8">
+                <div>
+                    <p class="text-xs font-black tracking-[.16em] text-[#e3a6b6] uppercase">On the pitch</p>
+                    <h2 id="next-match-heading" class="mt-2 text-3xl uppercase">Next fixture</h2>
+                </div>
+                @if ($nextFixture)
+                    <div class="flex flex-col gap-1">
+                        <p class="text-xs font-bold tracking-[.1em] text-[#e3a6b6] uppercase">
+                            {{ $nextFixture->type->value }} rugby
+                        </p>
+                        <p class="text-lg font-bold">
+                            Hurricanes <span class="text-[#e3a6b6]">vs</span> {{ $nextFixture->opposition }}
+                        </p>
+                        <p class="text-sm text-[#d5cdd0]">
+                            <time datetime="{{ $nextFixture->start->toIso8601String() }}">{{ $nextFixture->start->format('D j M Y · g:ia') }}</time>
+                            · {{ $nextFixture->location }}
+                        </p>
+                    </div>
+                    <x-action-link
+                        :href="route('fixtures.show', [$nextFixture->type->value, $nextFixture])"
+                        variant="outline"
+                    >Match details</x-action-link>
+                @else
+                    <p class="text-[#d5cdd0]">No upcoming fixtures are scheduled yet. Check back for updates.</p>
+                    <x-action-link :href="route('fixtures.index', 'touch')" variant="outline"
+                        >View fixtures</x-action-link>
+                @endif
             </div>
         </section>
 
@@ -77,7 +109,7 @@
                 </div>
                 <div class="grid gap-4 md:grid-cols-2">
                     <x-game-card
-                        :href="route('training-sessions')"
+                        :href="route('touch-rugby.index')"
                         image="resources/images/bas_looking_stern.jpg"
                         alt="A Hurricanes player"
                         number="01"
@@ -85,7 +117,7 @@
                         description="Fast, social and open to all abilities."
                     />
                     <x-game-card
-                        :href="route('training-sessions')"
+                        :href="route('rugby-union.index')"
                         image="resources/images/me_looking_fat.jpg"
                         alt="A Hurricanes player at rugby"
                         number="02"
@@ -95,10 +127,46 @@
                 </div>
             </div>
         </section>
+        <section aria-labelledby="latest-news-heading" class="mx-auto max-w-[1280px] px-6 py-16 md:px-8 md:py-24">
+            <div class="mb-8 flex flex-wrap items-end justify-between gap-4">
+                <div>
+                    <x-section-kicker number="03">From the club</x-section-kicker>
+                    <h2 id="latest-news-heading" class="mt-4 text-5xl uppercase">Latest news</h2>
+                </div>
+                <a
+                    href="{{ route('blog.index') }}"
+                    wire:navigate
+                    class="border-hurricanes-purple border-b-2 pb-2 text-xs font-black tracking-[.08em] uppercase"
+                >All club news ↗</a>
+            </div>
+            @if ($latestPosts->isNotEmpty())
+                <div class="grid gap-4 md:grid-cols-3">
+                    @foreach ($latestPosts as $post)
+                        <a
+                            href="{{ route('blog.show', $post->slug) }}"
+                            wire:navigate
+                            class="group border-hurricanes-purple flex min-h-48 flex-col items-start justify-between gap-8 border-t-4 bg-white p-6 transition-colors hover:bg-[#171417] hover:text-white"
+                        >
+                            <span class="text-xs font-black tracking-[.12em] text-[#8b465a] uppercase"
+                                ><time
+                                    datetime="{{ $post->created_at->toDateString() }}"
+                                    >{{ $post->created_at->format('j M Y') }}</time>
+                                · Club news</span>
+                            <span class="font-hurricanes-header text-2xl">{{ $post->title }}</span
+                            ><span aria-hidden="true" class="text-hurricanes-purple text-xl">↗</span>
+                        </a>
+                    @endforeach
+                </div>
+            @else
+                <p class="border-hurricanes-purple border-l-4 bg-white p-6">
+                    Club news will appear here when it's available.
+                </p>
+            @endif
+        </section>
         <section class="bg-hurricanes-purple py-16 text-white md:py-24">
             <div class="mx-auto flex max-w-[1280px] flex-col items-start justify-between gap-8 px-6 md:flex-row md:items-end md:px-8">
                 <div>
-                    <x-section-kicker number="03" :light="true">Come as you are</x-section-kicker>
+                    <x-section-kicker number="04" :light="true">Come as you are</x-section-kicker>
                     <h2 class="mt-6 text-[clamp(3.2rem,5.5vw,5.5rem)] leading-[.95] uppercase">
                         Ready to be<br /><em class="text-[#261820] not-italic">a Hurricane?</em>
                     </h2>
