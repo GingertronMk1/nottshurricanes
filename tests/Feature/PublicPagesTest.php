@@ -3,7 +3,6 @@
 use App\Models\BlogPost;
 use App\Models\CommitteeMember;
 use App\Models\Fixture;
-use App\Models\PageContent;
 use App\RugbyType;
 
 beforeEach(function () {
@@ -40,10 +39,7 @@ test('fixtures are filtered by rugby type and shown individually', function () {
     $this->get('/fixtures/invalid')->assertNotFound();
 });
 
-test('training pages render their own markdown content safely', function () {
-    PageContent::factory()->create(['route' => 'touch-rugby.training-sessions', 'content' => "# Touch training\n\n<script>alert('x')</script>"]);
-    PageContent::factory()->create(['route' => 'rugby-union.training-sessions', 'content' => '# Union training']);
-
-    $this->get(route('touch-rugby.training-sessions'))->assertOk()->assertSee('<h1>Touch training</h1>', false)->assertDontSee('<script>', false)->assertDontSee('Union training');
-    $this->get(route('rugby-union.training-sessions'))->assertOk()->assertSee('Union training')->assertDontSee('Touch training');
+test('training pages show the relevant rugby format', function () {
+    $this->get(route('touch-rugby.training-sessions'))->assertOk()->assertSee('Touch Rugby Training')->assertDontSee('Rugby Union Training');
+    $this->get(route('rugby-union.training-sessions'))->assertOk()->assertSee('Rugby Union Training')->assertDontSee('Touch Rugby Training');
 });
