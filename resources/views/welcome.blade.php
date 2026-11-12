@@ -104,8 +104,7 @@
                     </h2>
                     <p class="mt-6">No experience needed. Just bring yourself.</p>
                 </div>
-                <x-action-link :href="route('training-sessions')" variant="light"
-                    >Find a training session</x-action-link>
+                <x-training-call-to-action variant="light" />
             </div>
         </section>
     </div>

@@ -11,6 +11,6 @@
             you were born with a ball in your hand or you were an avowed PE-hater.
         </p>
         <p>Our mixed-gender touch team has attended IGR Northern Touch League tournament days in Preston, Manchester, Liverpool, Newcastle and Coventry. Touch is a great way to get moving, learn the game and meet the team.</p>
-        <a href="{{ route('training-sessions') }}" wire:navigate class="text-hurricanes-purple underline">Find a training session</a>
+        <x-training-call-to-action class="self-start" />
     </div>
 @endsection
