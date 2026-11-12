@@ -61,8 +61,7 @@
                         >Match details</x-action-link>
                 @else
                     <p class="text-[#d5cdd0]">No upcoming fixtures are scheduled yet. Check back for updates.</p>
-                    <x-action-link :href="route('fixtures.index')" variant="outline"
-                        >View fixtures</x-action-link>
+                    <x-action-link :href="route('fixtures.index')" variant="outline">View fixtures</x-action-link>
                 @endif
             </div>
         </section>
@@ -101,7 +100,7 @@
                             There's a place<br />for <em class="text-[#cf8499] not-italic">you here.</em>
                         </h2>
                     </div>
-                    <p class="leading-[1.7] text-[#665e61] flex flex-col gap-y-2">
+                    <p class="flex flex-col gap-y-2 leading-[1.7] text-[#665e61]">
                         <span>Two ways to play. One brilliant community.</span>
                         <span class="text-right">Your first month is on us.</span>
                     </p>
