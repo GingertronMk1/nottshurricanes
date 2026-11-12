@@ -41,6 +41,9 @@ jobs:
           DB_DATABASE=laravel
           DB_USERNAME=sail
           DB_PASSWORD=password
+          PUSHER_APP_KEY=key
+          PUSHER_APP_SECRET=pusher-secret
+          PUSHER_APP_ID=hurricanes-github
           EOF
           echo "WWWGROUP=$(id -g)" >> "$GITHUB_ENV"
 
