@@ -62,16 +62,7 @@ jobs:
           docker save sail-8.5/app --output /tmp/sail-image.tar
 
       - name: Start Sail and wait for MySQL
-        run: |
-          vendor/bin/sail up -d
-          for attempt in {1..60}; do
-            if vendor/bin/sail exec -T mysql mysql -usail -ppassword testing -e 'SELECT 1' > /dev/null 2>&1; then
-              exit 0
-            fi
-            sleep 2
-          done
-          vendor/bin/sail logs mysql
-          exit 1
+        run: vendor/bin/sail up -d --wait
 
       - name: Setup Application
         run: vendor/bin/sail composer setup
