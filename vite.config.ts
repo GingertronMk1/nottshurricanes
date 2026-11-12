@@ -74,7 +74,7 @@ export default defineConfig({
             'CLAUDE.md',
             'AGENTS.md',
             'boost.json',
-            '.agents/skills/**'
+            '.agents/skills/**',
         ],
         sortTailwindcss: {
             functions: ['clsx', 'cn', 'cva'],
