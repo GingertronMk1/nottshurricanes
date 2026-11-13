@@ -3,8 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="{{ Vite::asset('resources/images/club_logo.jpg') }}" type="image/jpeg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     @fonts
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -14,14 +13,18 @@
         {{ config('app.name', 'Laravel') }}
     </title>
 </head>
-<body class="font-sans antialiased">
-    <div id="app" class="flex h-full flex-col">
+<body class="font-hurricanes-body bg-[#111] text-[#171417] antialiased">
+    <div id="app" class="flex min-h-screen flex-col">
+        <a href="#main-content" class="absolute -top-[100px] left-4 z-100 bg-white p-4 focus:top-4">Skip to content</a>
         @include('components.header')
-        <div class="bg-hurricanes-purple font-hurricanes-body flex flex-1 flex-row justify-center">
-            <main class="container flex flex-col items-stretch bg-white p-2 text-black dark:bg-black dark:text-white">
-                @yield('content')
+        <div class="flex-1 bg-[#f8f6f4]">
+            <main id="main-content" class="min-h-[45vh]">
+                <div @class(['mx-auto max-w-[1280px] px-6 py-12' => ! View::hasSection('full-width')])>
+                    @yield('content')
+                </div>
             </main>
         </div>
+        <x-footer />
     </div>
     @livewireScripts
 </body>

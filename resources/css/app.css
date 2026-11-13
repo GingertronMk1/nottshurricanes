@@ -44,21 +44,6 @@ h5 {
     @apply text-lg;
 }
 
-.markdown-renderer {
-    ul {
-        @apply list-disc;
-    }
-
-    ol {
-        @apply list-decimal;
-    }
-
-    ul,
-    ol {
-        @apply list-inside;
-    }
-}
-
 h1,
 h2,
 h3,

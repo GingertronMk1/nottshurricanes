@@ -11,6 +11,16 @@ test('blog posts with the same title receive unique slugs', function () {
     expect($second->slug)->toBe('club-news-1');
 });
 
+test('blog factory updates posts between their creation time and now', function () {
+    $this->travelTo(now()->startOfSecond());
+    $createdAt = now()->subYears(2);
+
+    $post = BlogPost::factory()->create(['created_at' => $createdAt]);
+
+    expect($post->updated_at->greaterThanOrEqualTo($createdAt))->toBeTrue()
+        ->and($post->updated_at->lessThanOrEqualTo(now()))->toBeTrue();
+});
+
 test('a fixture indicates whether it has happened', function () {
     $past = Fixture::factory()->make(['start' => now()->subDay()]);
     $future = Fixture::factory()->make(['start' => now()->addDay()]);

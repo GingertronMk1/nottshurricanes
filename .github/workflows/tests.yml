@@ -91,6 +91,22 @@ jobs:
         if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
         run: vendor/bin/sail artisan test --parallel --coverage --min=90
 
+      - name: Run Browser Tests
+        id: browser_tests
+        if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
+        run: vendor/bin/sail dusk
+
+      - name: Upload Browser Test Artifacts
+        if: ${{ !cancelled() && steps.browser_tests.outcome == 'failure' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-test-failures
+          path: |
+            tests/Browser/screenshots/
+            tests/Browser/console/
+            tests/Browser/source/
+          if-no-files-found: ignore
+
   dependabot-auto-merge:
     if: github.event_name == 'pull_request' && github.event.pull_request.user.login == 'dependabot[bot]'
     needs: ci

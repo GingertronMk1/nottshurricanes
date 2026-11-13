@@ -13,7 +13,7 @@ class BlogPostController extends Controller
     public function index(): View
     {
         return view('blog.index', [
-            'posts' => BlogPost::query()->paginate(10),
+            'posts' => BlogPost::query()->latest('created_at')->latest('id')->paginate(10),
         ]);
     }
 

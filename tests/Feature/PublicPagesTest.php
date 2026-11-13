@@ -3,7 +3,6 @@
 use App\Models\BlogPost;
 use App\Models\CommitteeMember;
 use App\Models\Fixture;
-use App\Models\PageContent;
 use App\RugbyType;
 
 beforeEach(function () {
@@ -15,6 +14,13 @@ test('the blog lists posts and shows a post by slug', function () {
 
     $this->get(route('blog.index'))->assertOk()->assertSee('Club news')->assertSee('Latest updates');
     $this->get(route('blog.show', $post->slug))->assertOk()->assertSee('Club news')->assertSee('Latest updates');
+});
+
+test('the blog index lists posts by creation date, not their update date', function () {
+    BlogPost::factory()->create(['title' => 'Older story', 'created_at' => now()->subDays(3), 'updated_at' => now()]);
+    BlogPost::factory()->create(['title' => 'Newer story', 'created_at' => now()->subDay(), 'updated_at' => now()->subDay()]);
+
+    $this->get(route('blog.index'))->assertOk()->assertSeeInOrder(['Newer story', 'Older story']);
 });
 
 test('the committee page only shows active members in order', function () {
@@ -31,19 +37,38 @@ test('external links are shared with the page', function () {
     $this->get(route('external-links'))->assertOk()->assertSee('Club shop')->assertSee('https://example.com');
 });
 
-test('fixtures are filtered by rugby type and shown individually', function () {
+test('fixtures can be filtered by rugby type and shown individually', function () {
     $fixture = Fixture::factory()->create(['type' => RugbyType::TOUCH, 'opposition' => 'Touch opponents']);
     Fixture::factory()->create(['type' => RugbyType::UNION, 'opposition' => 'Union opponents']);
 
-    $this->get(route('fixtures.index', RugbyType::TOUCH))->assertOk()->assertSee('Touch opponents')->assertDontSee('Union opponents');
-    $this->get(route('fixtures.show', [RugbyType::TOUCH, $fixture]))->assertOk()->assertSee('Touch opponents');
-    $this->get('/fixtures/invalid')->assertNotFound();
+    $this->get(route('fixtures.index'))->assertOk()->assertSee('Touch opponents')->assertSee('Union opponents');
+    $this->get(route('fixtures.index', ['type' => 'touch']))->assertOk()->assertSee('Touch opponents')->assertDontSee('Union opponents');
+    $this->get(route('fixtures.index', ['type' => 'union']))->assertOk()->assertSee('Union opponents')->assertDontSee('Touch opponents');
+    $this->get(route('fixtures.show', $fixture))->assertOk()->assertSee('Touch opponents')->assertSee('Tapping');
+    $this->get(route('fixtures.index', ['type' => 'invalid']))->assertNotFound();
+    $this->get('/fixtures?type[]=touch')->assertNotFound();
 });
 
-test('training pages render their own markdown content safely', function () {
-    PageContent::factory()->create(['route' => 'touch-rugby.training-sessions', 'content' => "# Touch training\n\n<script>alert('x')</script>"]);
-    PageContent::factory()->create(['route' => 'rugby-union.training-sessions', 'content' => '# Union training']);
+test('fixture pagination preserves the selected rugby type', function () {
+    Fixture::factory()->count(11)->create(['type' => RugbyType::TOUCH]);
 
-    $this->get(route('touch-rugby.training-sessions'))->assertOk()->assertSee('<h1>Touch training</h1>', false)->assertDontSee('<script>', false)->assertDontSee('Union training');
-    $this->get(route('rugby-union.training-sessions'))->assertOk()->assertSee('Union training')->assertDontSee('Touch training');
+    $this->get(route('fixtures.index', ['type' => 'touch']))
+        ->assertOk()
+        ->assertSee('type=touch', false)
+        ->assertSee('page=2', false);
+});
+
+test('the training page shows both rugby formats and the training venue', function () {
+    $this->get(route('training-sessions'))
+        ->assertOk()
+        ->assertSee('Touch Rugby')
+        ->assertSee('Rugby Union')
+        ->assertSee('Nottingham Casuals');
+});
+
+test('the contact page provides general and touch contact details', function () {
+    $this->get(route('contact'))
+        ->assertOk()
+        ->assertSee('NottsHurricanes@outlook.com')
+        ->assertSee('HurricanesTouch@outlook.com');
 });
