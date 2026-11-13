@@ -23,7 +23,8 @@ class BlogPostFactory extends Factory
             'title' => $title,
             'slug' => BlogPost::createUniqueSlug($title),
             'content' => $this->faker->paragraph(3),
-            'created_at' => $this->faker->dateTimeBetween('2019-06-06', 'now'),
+            'created_at' => $this->faker->dateTimeBetween('2019-06-06', now()),
+            'updated_at' => fn (array $attributes) => $this->faker->dateTimeBetween($attributes['created_at'], now()),
         ];
     }
 }

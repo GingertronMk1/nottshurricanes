@@ -12,7 +12,7 @@ class HomeController extends Controller
     {
         return view('welcome', [
             'nextFixture' => Fixture::query()->where('start', '>=', now())->orderBy('start')->first(),
-            'latestPosts' => BlogPost::query()->latest()->latest('id')->limit(3)->get(),
+            'latestPosts' => BlogPost::query()->latest('created_at')->latest('id')->limit(3)->get(),
         ]);
     }
 }

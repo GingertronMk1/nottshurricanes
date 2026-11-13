@@ -16,6 +16,13 @@ test('the blog lists posts and shows a post by slug', function () {
     $this->get(route('blog.show', $post->slug))->assertOk()->assertSee('Club news')->assertSee('Latest updates');
 });
 
+test('the blog index lists posts by creation date, not their update date', function () {
+    BlogPost::factory()->create(['title' => 'Older story', 'created_at' => now()->subDays(3), 'updated_at' => now()]);
+    BlogPost::factory()->create(['title' => 'Newer story', 'created_at' => now()->subDay(), 'updated_at' => now()->subDay()]);
+
+    $this->get(route('blog.index'))->assertOk()->assertSeeInOrder(['Newer story', 'Older story']);
+});
+
 test('the committee page only shows active members in order', function () {
     CommitteeMember::factory()->create(['name' => 'Second', 'is_active' => true, 'sort_order' => 2]);
     CommitteeMember::factory()->create(['name' => 'First', 'is_active' => true, 'sort_order' => 1]);
